@@ -16,13 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from EPanel.core import views
-from rest_framework.authtoken.views import obtain_auth_token
 from EPanel.core.Authentication import JSONWebTokenAPIOverride
+from rest_framework_simplejwt import views as jwt_views
 
 
 urlpatterns = [
-    path('token', JSONWebTokenAPIOverride.as_view(), name='token_obtain_pair'),
+    path('token', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('refresh', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+
     path('admin/', admin.site.urls),
     path('hello/', views.HelloView.as_view(), name='hello'),
-    path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
 ]
