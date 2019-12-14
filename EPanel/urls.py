@@ -16,7 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from EPanel.core import views
-from EPanel.core.Authentication import JSONWebTokenAPIOverride
 from rest_framework_simplejwt import views as jwt_views
 
 
