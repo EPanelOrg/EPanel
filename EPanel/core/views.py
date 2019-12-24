@@ -32,7 +32,8 @@ class DeviceView(APIView):
 
         return Response(content)
 
-    def get(self, request):
+    def get(self, request, pk=None):
+        #TODO: pk
         device_name = request.data['device_name']
         try:
             res = Device.objects.get(device_name=device_name)
