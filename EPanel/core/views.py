@@ -59,3 +59,15 @@ class DeviceView(APIView):
             content = {"error": str(ex)}
 
         return Response(content)
+
+    def delete(self, request):
+        device_name = request.data['device_name']
+        try:
+            object = Device.objects.get(device_name=device_name)
+            object.delete()
+            content = {"msg": "ok"}
+        except Exception as ex:
+            print(ex)
+            content = {"error": str(ex)}
+
+        return Response(content)
