@@ -33,17 +33,25 @@ class DeviceView(APIView):
         return Response(content)
 
     def get(self, request, pk=None):
-        #TODO: pk
-        device_name = request.data['device_name']
-        try:
-            res = Device.objects.get(device_name=device_name)
-            serializer_class = DeviceSerializer(res)
-            serialized_data = {'data': serializer_class.data}['data']
-            content = serialized_data
+        if pk:
+            device_name = pk
+            try:
+                res = Device.objects.get(device_name=device_name)
+                serializer_class = DeviceSerializer(res)
+                serialized_data = {'data': serializer_class.data}['data']
+                content = serialized_data
 
-        except Exception as ex:
-            print(ex)
-            content = {"error": str(ex), "msg": "no device with such a device_name."}
+            except Exception as ex:
+                print(ex)
+                content = {"error": str(ex), "msg": "no device with such a device_name."}
+        else:
+            content = []
+            objects = Device.objects.all()
+            for object in objects:
+                serializer_class = DeviceSerializer(object)
+                serialized_data = {'data': serializer_class.data}['data']
+                content.append(serialized_data)
+
 
         return Response(content)
 
