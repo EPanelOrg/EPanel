@@ -14,3 +14,6 @@ class DevicePlan(models.Model):
 
     def get_power_amount(self):
         return self.device.consuming_power * self.uptime_per_day
+
+
+# Here goes my models of private price estimator
