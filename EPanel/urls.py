@@ -25,5 +25,9 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('hello/', views.HelloView.as_view(), name='hello'),
+    path('device/<str:pk>', views.DeviceView.as_view(), name='device'),
+    path('device/', views.DeviceView.as_view(), name='device'),
+
+
     path('list/', views.ListDemands.as_view(), name='list'),
 ]
