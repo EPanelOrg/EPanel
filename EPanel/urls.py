@@ -29,5 +29,5 @@ urlpatterns = [
     path('device/', views.DeviceView.as_view(), name='device'),
 
 
-    path('list/', views.ListDemands.as_view(), name='list'),
+    path('ds/', views.ListDemands.as_view(), name='list'),
 ]

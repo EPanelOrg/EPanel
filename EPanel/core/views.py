@@ -9,6 +9,7 @@ from EPanel.core.serializers import DeviceSerializer
 from .models import Demand_supply
 from .serializers import DS_Serializer
 
+
 class HelloView(APIView):
     permission_classes = (IsAuthenticated,)
 
@@ -54,7 +55,6 @@ class DeviceView(APIView):
                 serialized_data = {'data': serializer_class.data}['data']
                 content.append(serialized_data)
 
-
         return Response(content)
 
     def put(self, request):
@@ -82,13 +82,24 @@ class DeviceView(APIView):
             content = {"error": str(ex)}
 
         return Response(content)
+
+
 class ListDemands(APIView):
-    # permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
 
     def get(self, request):
-
         homeIDs = Demand_supply.objects.all()
         serializer = DS_Serializer(homeIDs, many=True)
-        serialized_data = { 'data':serializer.data}
+        serialized_data = {'data': serializer.data}
         return Response(serialized_data)
 
+    def post(self, request):
+        params = request.data
+        serializer = DS_Serializer(data=params)
+        result = dict()
+        if serializer.is_valid():
+            create_result = serializer.save()
+            print(create_result)
+        else:
+            result['error'] = serializer.errors
+        return Response(result)
