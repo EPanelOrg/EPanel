@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from EPanel.core.models import Device
+from .models import Demand_supply
 
 class DeviceSerializer(serializers.Serializer):
     consuming_power = serializers.IntegerField()
@@ -7,7 +8,6 @@ class DeviceSerializer(serializers.Serializer):
     class Meta:
         model = Device
         fields = ("consuming_power", "device_name")
-from .models import Demand_supply
 
 class DS_Serializer(serializers.Serializer):
 

@@ -5,7 +5,10 @@ from rest_framework.permissions import IsAuthenticated
 from EPanel.core.models import Device
 from django.db.utils import IntegrityError
 from EPanel.core.serializers import DeviceSerializer
-
+from django.contrib.auth.models import User
+from django.contrib.auth import login, authenticate
+from rest_framework.decorators import api_view
+from django.shortcuts import render, redirect
 from .models import Demand_supply
 from .serializers import DS_Serializer
 
@@ -103,3 +106,17 @@ class ListDemands(APIView):
         else:
             result['error'] = serializer.errors
         return Response(result)
+
+
+@api_view(["POST"])
+def signup(request):
+    params = request.data
+    username = params['username']
+    password = params['password']
+
+    user = User.objects.create(username= username)
+    user.set_password(password)
+    user.save()
+    print(user)
+
+    return Response({})
