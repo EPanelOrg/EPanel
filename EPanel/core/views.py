@@ -124,10 +124,11 @@ def signup(request):
     username = params['username']
     password = params['password']
 
-    existing_user, new_user = User.objects.get_or_create(username=username)
-    if not existing_user:
-        new_user.set_password(password)
-        new_user.save()
+    user, is_new = User.objects.get_or_create(username=username)
+    print(user,is_new)
+    if is_new:
+        user.set_password(password)
+        user.save()
         return Response({'msg': "user successfully created!"})
     else:
         return Response({"error": "duplicate username,choose another one."})
