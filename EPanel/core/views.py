@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-from EPanel.core.models import Device
+from EPanel.core.models import Device, Home
 from django.db.utils import IntegrityError
 from EPanel.core.serializers import DeviceSerializer
 from django.contrib.auth.models import User
@@ -108,16 +108,26 @@ class ListDemands(APIView):
         return Response(result)
 
 
+class HomeView(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request):
+        user = request.user
+        home = Home.objects.create(owner=user)
+        print(type(home))
+        return Response({'msg': 'home successfully created!'})
+
+
 @api_view(["POST"])
 def signup(request):
     params = request.data
     username = params['username']
     password = params['password']
 
-    existing_user ,new_user = User.objects.get_or_create(username= username)
+    existing_user, new_user = User.objects.get_or_create(username=username)
     if not existing_user:
         new_user.set_password(password)
         new_user.save()
         return Response({'msg': "user successfully created!"})
     else:
-        return Response({"error":"duplicate username,choose another one."})
+        return Response({"error": "duplicate username,choose another one."})
