@@ -9,12 +9,21 @@ class Device(models.Model):
 
 
 class Home(models.Model):
-    owner = models.ForeignKey(User, null=False, on_delete=models.CASCADE,default=None)
+    owner = models.ForeignKey(User, null=False, on_delete=models.CASCADE, default=None)
+    active = models.BooleanField(default=True)
+
+    def __unicode__(self):
+        return self.name
+
+
+class Section(models.Model):
+    home = models.ForeignKey(Home, on_delete=models.CASCADE, null=False)
 
 
 class DevicePlan(models.Model):
     device = models.ForeignKey(Device, on_delete=models.CASCADE, unique=True)
     uptime_per_day = models.IntegerField()
+    section = models.ForeignKey(Section, on_delete=models.SET_NULL, null=True)
 
     def get_power_amount(self):
         return self.device.consuming_power * self.uptime_per_day

@@ -28,5 +28,7 @@ urlpatterns = [
     path('device/<str:pk>', views.DeviceView.as_view(), name='device'),
     path('device/', views.DeviceView.as_view(), name='device'),
     path('home/', views.HomeView.as_view(), name='home'),
+    path('section/', views.SectionView.as_view(), name='home'),
+
     path('ds/', views.ListDemands.as_view(), name='list'),
 ]
