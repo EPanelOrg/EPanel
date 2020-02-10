@@ -125,10 +125,16 @@ def signup(request):
     password = params['password']
 
     user, is_new = User.objects.get_or_create(username=username)
-    print(user,is_new)
+    print(user, is_new)
     if is_new:
         user.set_password(password)
         user.save()
         return Response({'msg': "user successfully created!"})
     else:
         return Response({"error": "duplicate username,choose another one."})
+
+
+def index(request):
+    my_dict = {"insert_me": "I am from views.py"}
+    # return render(request, 'index.html', context=my_dict)
+    return render(request, 'index.html')

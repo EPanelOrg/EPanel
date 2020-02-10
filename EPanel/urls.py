@@ -29,4 +29,6 @@ urlpatterns = [
     path('device/', views.DeviceView.as_view(), name='device'),
     path('home/', views.HomeView.as_view(), name='home'),
     path('ds/', views.ListDemands.as_view(), name='list'),
+
+    path('', views.index, name="homepage")
 ]
