@@ -32,44 +32,45 @@
             <div class="tab-content">
                 <div class="container" id="home" class="tab-pane fade">
                     <h3>homes</h3>
-                    <ul class="nav nav-tabs" id="homeList">
-                        <li><a data-toggle="pill" href="#home1" >home 1</a></li>
-                        <li><a data-toggle="pill" href="#home2">home 2</a></li>
-                        <!-- <li><a data-toggle="pill" href="#home3">home 3</a></li> -->
-                        <li><a  href="#plus" onclick="myFunction()" id="plus">&#43</a></li>
-                    </ul>
-                    <div class="tab-content">
-                        <div id="home1" class="tab-pane fade">
-                            <h3>diffrent section in home 1</h3>
-                            <div class="grid-container">
-                                <img src="/home/kimia/termm7/UI/fully-responsive-css3-menu/dist/im.png" />
-                                <img src="/home/kimia/termm7/UI/fully-responsive-css3-menu/dist/im.png" />
-                                <img src="/home/kimia/termm7/UI/fully-responsive-css3-menu/dist/im.png" />
-                                <img src="/home/kimia/termm7/UI/fully-responsive-css3-menu/dist/im.png" />
-                                <img src="/home/kimia/termm7/UI/fully-responsive-css3-menu/dist/plus.png" />
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>
+                                    <button id="btn-add-tab" type="button" class="btn btn-primary pull-right">&#43</button>
+                                </p>
+                                <!-- Nav tabs -->
+                                <ul id="tab-list" class="nav nav-tabs" role="tablist">
+                                    <li class="active"><a href="#home1" role="tab" data-toggle="tab"><span>home 1 </span><span class="glyphicon glyphicon-pencil text-muted edit"></span></a></li>
+                                </ul>
+
+                                <!-- Tab panes -->
+                                <div id="tab-content" class="tab-content">
+                                    <div class="tab-pane fade in active" id="home1">
+                                        <h3>diffrent section in home 1</h3>
+                                        <div class="grid-container">
+                                            <img src="/home/kimia/termm7/UI/fully-responsive-css3-menu/dist/im.png" />
+                                            <img src="/home/kimia/termm7/UI/fully-responsive-css3-menu/dist/im.png" />
+                                            <img src="/home/kimia/termm7/UI/fully-responsive-css3-menu/dist/im.png" />
+                                            <img src="/home/kimia/termm7/UI/fully-responsive-css3-menu/dist/im.png" />
+                                            <img src="/home/kimia/termm7/UI/fully-responsive-css3-menu/dist/plus.png" />
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div id="home2" class="tab-pane fade">
-                            <h3>home 2</h3>
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-                        </div>
-                        <div id="home3" class="tab-pane fade">
-                            <h3>home 3</h3>
-                            <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                        </div>
                     </div>
+
                 </div>
-            </div>
-        </div>
-        <div class="tab-pane fade show active" id="v-pills-dashboard" role="tabpanel" aria-labelledby="v-pills-dashboard-tab">
-            <p>write dashboard html here</p>
-        </div>
-        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-            <p>write profile html here</p>
-        </div>
-        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-            <p>write Settings html here</p>
-        </div>
+                <div class="tab-pane fade show active" id="v-pills-dashboard" role="tabpanel" aria-labelledby="v-pills-dashboard-tab">
+                    <p>write dashboard html here</p>
+                </div>
+                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                    <p>write profile html here</p>
+                </div>
+                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                    <p>write Settings html here</p>
+                </div>
+            </div></div>
     </div>
 </main>
 <!-- partial -->
