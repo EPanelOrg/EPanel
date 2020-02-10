@@ -90,6 +90,7 @@ class PlanView(APIView):
     permission_classes = (IsAuthenticated,)
 
     def post(self,request):
+        pass
 
 
 
