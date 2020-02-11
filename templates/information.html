@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>CodePen - Fully responsive CSS3 menu</title>
+    <link rel="stylesheet" href="../Static/css/style.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<nav class="menu" tabindex="0">
+    <div class="smartphone-menu-trigger"></div>
+    <header class="avatar">
+        <img src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/128.jpg" />
+        <h2>John D.</h2>
+    </header>
+    <ul class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <li tabindex="0" class="icon-dashboard" class="nav-item" class="active"><a class="nav-link active" id="v-pills-dashboard-tab" data-toggle="tab" href="#v-pills-dashboard" role="tab" aria-controls="v-pills-dashboard" aria-selected="true">Dashboard</a></li>
+        <li tabindex="0" class="icon-customers" class="nav-item" class="active"><a class="nav-link" id="v-pills-profile-tab" data-toggle="tab" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a></li>
+        <li tabindex="0" class="icon-home" class="nav-item" class="active"><a class="nav-link" id="v-pills-home-tab" data-toggle="tab" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="false">Home</a></li>
+        <li tabindex="0" class="icon-settings"  class="nav-item" class="active">  <a class="nav-link" id="v-pills-settings-tab" data-toggle="tab" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a></li>
+    </ul>
+</nav>
+
+<main>
+    <div class="tab-content" id="v-pills-tabContent">
+        <div class="tab-pane fade " id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+            <div class="tab-content">
+                <div class="container" id="home" class="tab-pane fade">
+                    <h3>homes</h3>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p><button id="btn-add-tab" type="button" class="btn btn-primary pull-right">&#43</button></p>
+                                <!-- Nav tabs -->
+                                <ul id="tab-list" class="nav nav-tabs" role="tablist">
+                                    <li class="active"><a href="#home1" role="tab" data-toggle="tab"><span>&#127968 1 </span><span class="glyphicon glyphicon-pencil text-muted edit"></span></a></li>                                </ul>
+                                <!-- Tab panes -->
+                                <div id="tab-content" class="tab-content">
+                                    <div class="tab-pane fade " id="home1">
+                                        <h3>diffrent section in home 1</h3>
+                                        <div class="grid-container">
+                                            <img src="../Static/images/im.png" />
+                                            <img src="../Static/images/im.png" />
+                                            <img src="../Static/images/im.png" />
+                                            <img src="../Static/images/im.png" />
+                                            <img src="../Static/images/plus.png" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade " id="v-pills-dashboard" role="tabpanel" aria-labelledby="v-pills-dashboard-tab">
+            <p>write dashboard html here</p>
+        </div>
+        <div class="tab-pane fade " id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+            <iframe width="1000" height="2000"  src="./profile.html"  ></iframe>
+
+        </div>
+        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+            <p>write Settings html here</p>
+        </div>
+    </div>
+</main>
+<!-- partial -->
+<script  src="../Static/js/script.js"></script>
+
+</body>
+</html>

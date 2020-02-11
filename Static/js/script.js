@@ -3,8 +3,6 @@
  * Icons from entypo.com
  * Avatar from uifaces.com
  */
-
-
 var button='<button class="close" type="button" title="Remove this page">×</button>';
 var homeID = 1;
 function resetTab(){
@@ -20,20 +18,20 @@ function resetTab(){
 $(document).ready(function() {
     $('#btn-add-tab').click(function() {
         homeID++;
-        $('#tab-list').append($('<li><a href="#home' + homeID + '" role="tab" data-toggle="tab"><span>home ' + homeID + '</span> <span class="glyphicon glyphicon-pencil text-muted edit"></span> <button class="close" type="button" title="Remove this page">×</button></a></li>'));
-        $('#tab-content').append($('<div class="tab-pane fade" id="home' + homeID + '">section of home ' + homeID + ' <div class="grid-container"><img src="/home/kimia/termm7/UI/fully-responsive-css3-menu/dist/plus.png" /></div></div>'));
+        $('#tab-list').append($('<li><a href="#home' + homeID + '" role="tab" data-toggle="tab"><span> 	&#127968;' + homeID + '</span> <span class="glyphicon glyphicon-pencil text-muted edit"></span> <button class="close" type="button" title="Remove this page">×</button></a></li>'));
+        $('#tab-content').append($('<div class="tab-pane fade" id="home' + homeID + '">section of home ' + homeID + ' <div class="grid-container"></div></div>'));
         $(".edit").click(editHandler);
     });
-    
+
     $('#tab-list').on('click', '.close', function() {
         var homeID = $(this).parents('a').attr('href');
         $(this).parents('li').remove();
         $(homeID).remove();
 
         //display first tab
-        var tabFirst = $('#tab-list a:first');
-        resetTab();
-        tabFirst.tab('show');
+        // var tabFirst = $('#tab-list a:first');
+        // resetTab();
+        // tabFirst.tab('show');
     });
 
     var list = document.getElementById("tab-list");
