@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from EPanel.core.models import Device, Home, Section
+from EPanel.core.models import Device, Home, Section,Profile
 from .models import Demand_supply
 
 
@@ -35,6 +35,15 @@ class HomeSerializer(serializers.Serializer):
     class Meta:
         model = Home
         fields = ('owner', 'active', 'pk')
+
+class ProfileSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    user = serializers.CharField(source='user.pk')
+    credit = serializers.IntegerField()
+
+    class Meta:
+        model = Profile
+        fields = ('email', 'credit', 'user')
 
 
 class SectionSerializer(serializers.Serializer):

@@ -29,6 +29,8 @@ urlpatterns = [
     path('device/', views.DeviceView.as_view(), name='device'),
     path('home/', views.HomeView.as_view(), name='home'),
     path('section/', views.SectionView.as_view(), name='home'),
+    path('get-credit/', views.get_credit, name='credit'),
+    path('profile/', views.ProfileView.as_view(), name='credit'),
 
     path('ds/', views.ListDemands.as_view(), name='list'),
 ]

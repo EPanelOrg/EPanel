@@ -2,15 +2,15 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-from EPanel.core.models import Device, Home, Section
+from EPanel.core.models import *
 from django.db.utils import IntegrityError
 from EPanel.core.serializers import DeviceSerializer
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from django.shortcuts import render, redirect
 from .models import Demand_supply
-from .serializers import DS_Serializer, HomeSerializer, SectionSerializer
+from .serializers import DS_Serializer, HomeSerializer, SectionSerializer, ProfileSerializer
 
 
 class HelloView(APIView):
@@ -86,12 +86,12 @@ class DeviceView(APIView):
 
         return Response(content)
 
+
 class PlanView(APIView):
     permission_classes = (IsAuthenticated,)
 
-    def post(self,request):
+    def post(self, request):
         pass
-
 
 
 class ListDemands(APIView):
@@ -165,6 +165,54 @@ class SectionView(APIView):
         return Response(serialized_data)
 
 
+class ProfileView(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request):
+        data = request.data
+
+        res, created = Profile.objects.get_or_create(user=request.user, email=data['email'], credit=data['credit'])
+        if created:
+            content = {'msg': 'profile created successfully!'}
+        else:
+            content = {'error': 'user profile already exists! maybe you want to modify it?'}
+
+        return Response(content)
+
+    def get(self, request):
+        user = request.user
+        if Profile.objects.filter(user=user).exists():
+            profile = Profile.objects.get(user=user)
+            serializer = ProfileSerializer(profile)
+            data = {'data': serializer.data}
+        else:
+            data = {'error': 'no profile to retrieve!'}
+
+        return Response(data)
+
+    def put(self, request):
+        user = request.user
+        if Profile.objects.filter(user=user).exists():
+            profile = Profile.objects.get(user=user)
+            profile.email = request.data['email']
+            profile.credit = request.data['credit']
+            profile.save()
+            content = {'msg': 'profile updated successfully!'}
+        else:
+            content = {'error': 'you should add profile for this user first!'}
+
+        return Response(content)
+
+    def delete(self, request):
+        user = request.user
+        if Profile.objects.filter(user=user).exists():
+            Profile.objects.get().delete()
+            content = {'msg': 'profile deleted successfully!'}
+        else:
+            content = {'error': 'no profile to delete!'}
+
+        return Response(content)
+
 
 @api_view(["POST"])
 def signup(request):
@@ -180,3 +228,14 @@ def signup(request):
         return Response({'msg': "user successfully created!"})
     else:
         return Response({"error": "duplicate username,choose another one."})
+
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def get_credit(request):
+
+    user = request.user
+    credit = Profile.objects.get(user=user).credit
+    content = {'credit-amount': credit}
+
+    return Response(content)

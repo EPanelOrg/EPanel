@@ -8,6 +8,12 @@ class Device(models.Model):
     consuming_power = models.IntegerField()
 
 
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    credit = models.IntegerField()
+    email = models.EmailField(default=None, null=True)
+
+
 class Home(models.Model):
     owner = models.ForeignKey(User, null=False, on_delete=models.CASCADE, default=None)
     active = models.BooleanField(default=True)
@@ -21,7 +27,7 @@ class Section(models.Model):
 
 
 class DevicePlan(models.Model):
-    device = models.ForeignKey(Device, on_delete=models.CASCADE, unique=True)
+    device = models.OneToOneField(Device, on_delete=models.CASCADE)
     uptime_per_day = models.IntegerField()
     section = models.ForeignKey(Section, on_delete=models.SET_NULL, null=True)
 
