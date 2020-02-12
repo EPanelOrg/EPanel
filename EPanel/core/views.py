@@ -233,9 +233,18 @@ def signup(request):
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def get_credit(request):
-
     user = request.user
     credit = Profile.objects.get(user=user).credit
     content = {'credit-amount': credit}
+
+    return Response(content)
+
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def get_homes(request):
+    homes = Home.objects.all()
+
+    content = {'homes-count': len(homes)}
 
     return Response(content)
