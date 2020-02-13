@@ -17,8 +17,8 @@ class HelloView(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self, request):
-        content = {'message': 'bye, World!'}
-        return Response(content)
+        print(type(request.user))
+        return Response({})
 
 
 class DeviceView(APIView):
@@ -246,5 +246,21 @@ def get_homes(request):
     homes = Home.objects.all()
 
     content = {'homes-count': len(homes)}
+
+    return Response(content)
+
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def user_usage(request):
+    user = request.user
+    homes = Home.objects.filter(owner=user)
+    user_daily_usage = 0
+    for home in homes:
+        user_daily_usage += home.get_home_daily_usage()
+
+    content = {
+        'users_daily_usage': user_daily_usage
+    }
 
     return Response(content)

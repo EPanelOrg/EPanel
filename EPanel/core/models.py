@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+
 # Create your models here.
 class Device(models.Model):
     device_name = models.CharField(max_length=30, primary_key=True)
@@ -21,9 +22,23 @@ class Home(models.Model):
     def __unicode__(self):
         return self.name
 
+    def get_home_daily_usage(self):
+        sections = Section.objects.filter(home=self)
+        home_daily_usage = 0
+        for section in sections:
+            home_daily_usage += section.get_section_daily_usage()
+        return home_daily_usage
 
 class Section(models.Model):
     home = models.ForeignKey(Home, on_delete=models.CASCADE, null=False)
+
+    def get_section_daily_usage(self):
+        section_DP_list = DevicePlan.objects.filter(section=self)
+        section_usage = 0
+        for DP in section_DP_list:
+            section_usage += DP.get_power_amount()
+
+        return section_usage
 
 
 class DevicePlan(models.Model):

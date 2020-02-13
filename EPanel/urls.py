@@ -31,6 +31,7 @@ urlpatterns = [
     path('section/', views.SectionView.as_view(), name='home'),
     path('get-credit/', views.get_credit, name='credit'),
     path('get-homes/', views.get_homes, name='homes'),
+    path('my-usage/', views.user_usage, name='user usage'),
 
     path('profile/', views.ProfileView.as_view(), name='credit'),
 
