@@ -346,6 +346,39 @@ AOS.init({
         fixedContentPos: false
     });
 
+    $('#login-btn').click(function () {
+        var username;
+        var password;
+        username = $("#login-username").val().toString();
+        password = $("#login-password").val().toString();
+        $.ajax(
+            {
+                type: "POST",
+                url: "token",
+                data: JSON.stringify({
+                    username: username,
+                    password: password
+
+                }),
+                crossDomain: false,
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+                // success: function (data) {
+                //     //get token and go to dashboard
+                //     $("#temppp").innerText = data.access;
+                // },
+                // complete: function (data) {
+                //     $("#temppp").innerText = data.toString();
+                //
+                // }
+            }).done(function (data) {
+            // get token and go to dashboard
+            alert("token: " + data.access);
+        });
+    });
+
 
 })(jQuery);
 
