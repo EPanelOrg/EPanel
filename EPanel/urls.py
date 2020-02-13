@@ -32,6 +32,7 @@ urlpatterns = [
     path('get-credit/', views.get_credit, name='credit'),
     path('get-homes/', views.get_homes, name='homes'),
     path('my-usage/', views.user_usage, name='user usage'),
+    path('main/', views.main_page, name='main page'),
 
     path('profile/', views.ProfileView.as_view(), name='credit'),
 
