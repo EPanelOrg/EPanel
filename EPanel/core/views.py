@@ -123,18 +123,17 @@ def signup(request):
     params = request.data
     username = params['username']
     password = params['password']
+    email = params['email']
 
-    user, is_new = User.objects.get_or_create(username=username)
-    print(user, is_new)
-    if is_new:
-        user.set_password(password)
-        user.save()
-        return Response({'msg': "user successfully created!"})
-    else:
-        return Response({"error": "duplicate username,choose another one."})
+    try:
+        user, is_new = User.objects.get_or_create(username=username, email=email)
+        if is_new:
+            user.set_password(password)
+            user.save()
+        return Response({"result": 1})
+    except IntegrityError:
+        return Response({"result": 0})
 
 
 def index(request):
-    my_dict = {"insert_me": "I am from views.py"}
-    # return render(request, 'index.html', context=my_dict)
     return render(request, 'index.html')

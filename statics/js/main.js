@@ -380,5 +380,42 @@ AOS.init({
     });
 
 
+    $('#register-btn').click(function () {
+        var username;
+        var password;
+        var email;
+        username = $("#register-username").val().toString();
+        password = $("#register-password").val().toString();
+        email = $("#register-email").val().toString();
+        $.ajax(
+            {
+                type: "POST",
+                url: "register/",
+                data: JSON.stringify({
+                    username: username,
+                    password: password,
+                    email: email
+
+                }),
+                crossDomain: false,
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+
+            }).done(function (data) {
+            if (data.result === 1) {
+                alert("registered successfully");
+                $(location).attr('href', "dashboard");
+
+            } else {
+                alert("duplicate username!");
+                $("#register-error").textContent = "duplicate username !";
+            }
+
+        });
+    });
+
+
 })(jQuery);
 
