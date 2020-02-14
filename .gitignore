@@ -1,5 +1,4 @@
 # Project exclude paths
 /env/
 db.sqlite3
-/EPanel/core/migrations/0001_initial.py
 /.idea/

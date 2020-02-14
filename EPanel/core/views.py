@@ -230,6 +230,12 @@ def signup(request):
         return Response({"error": "duplicate username,choose another one."})
 
 
+def index(request):
+    my_dict = {"insert_me": "I am from views.py"}
+    # return render(request, 'index.html', context=my_dict)
+    return render(request, 'index.html')
+
+
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def get_credit(request):
