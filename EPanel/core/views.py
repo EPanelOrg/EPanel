@@ -11,7 +11,7 @@ from rest_framework.decorators import api_view, permission_classes
 from django.shortcuts import render, redirect
 from .models import Demand_supply
 from .serializers import DS_Serializer, HomeSerializer, SectionSerializer, ProfileSerializer
-
+from django.views.decorators.clickjacking import xframe_options_exempt
 
 class HelloView(APIView):
     permission_classes = (IsAuthenticated,)
@@ -264,3 +264,12 @@ def user_usage(request):
     }
 
     return Response(content)
+
+def main_page(request):
+    # return render(request, 'index.html', context=my_dict)
+    return render(request, 'information.html')
+
+@xframe_options_exempt
+def dashboard(request):
+    # return render(request, 'index.html', context=my_dict)
+    return render(request, 'dashBoard.html')

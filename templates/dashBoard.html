@@ -10,12 +10,15 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <!-- Pignose Calender -->
-    <link href="./../statics/dashboard/plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
+    <link href="{% static 'dashboard/plugins/pg-calendar/css/pignose.calendar.min.css' %}" rel="stylesheet">
+
     <!-- Chartist -->
-    <link rel="stylesheet" href="./../statics/dashboard/plugins/chartist/css/chartist.min.css">
-    <link rel="stylesheet" href="./../statics/dashboard/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
+    <link rel="stylesheet" href="{% static 'dashboard/plugins/chartist/css/chartist.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'dashboard/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css' %}">
+
     <!-- Custom Stylesheet -->
-    <link  href="../statics/dashboard/css/style.css" rel="stylesheet">
+    <link  href="{% static 'dashboard/css/style.css' %}" rel="stylesheet">
 
 </head>
 
@@ -237,7 +240,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="text-center">
-                                    <img src="./images/users/8.jpg" class="rounded-circle" alt="">
+                                    <img src="{% static 'dashboard/images/users/8.jpg' %}" class="rounded-circle" alt="">
+
                                     <h5 class="mt-3 mb-1">Ana Liem</h5>
                                     <p class="m-0">Senior Manager</p>
                                     <!-- <a href="javascript:void()" class="btn btn-sm btn-warning">Send Message</a> -->
@@ -249,7 +253,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="text-center">
-                                    <img src="./images/users/5.jpg" class="rounded-circle" alt="">
+                                    <img src="{% static 'dashboard/images/users/5.jpg' %}" class="rounded-circle" alt="">
+
                                     <h5 class="mt-3 mb-1">John Abraham</h5>
                                     <p class="m-0">Store Manager</p>
                                     <!-- <a href="javascript:void()" class="btn btn-sm btn-warning">Send Message</a> -->
@@ -261,7 +266,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="text-center">
-                                    <img src="./images/users/7.jpg" class="rounded-circle" alt="">
+                                    <img src="{% static 'dashboard/images/users/7.jpg' %}" class="rounded-circle" alt="">
+
                                     <h5 class="mt-3 mb-1">John Doe</h5>
                                     <p class="m-0">Sales Man</p>
                                     <!-- <a href="javascript:void()" class="btn btn-sm btn-warning">Send Message</a> -->
@@ -273,7 +279,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="text-center">
-                                    <img src="./images/users/1.jpg" class="rounded-circle" alt="">
+                                    <img src="{% static 'dashboard/images/users/1.jpg' %}" class="rounded-circle" alt="">
+
                                     <h5 class="mt-3 mb-1">Mehedi Titas</h5>
                                     <p class="m-0">Online Marketer</p>
                                     <!-- <a href="javascript:void()" class="btn btn-sm btn-warning">Send Message</a> -->
@@ -303,7 +310,7 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td><img src="./images/avatar/1.jpg" class=" rounded-circle mr-3" alt="">Sarah Smith</td>
+                                                    <td><img src="{% static 'dashboard/images/avatar/1.jpg' %}" class=" rounded-circle mr-3" alt="">Sarah Smith</td>
                                                     <td>iPhone X</td>
                                                     <td>
                                                         <span>United States</span>
@@ -322,7 +329,8 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><img src="./images/avatar/2.jpg" class=" rounded-circle mr-3" alt="">Walter R.</td>
+                                                    <td><img src="{% static 'dashboard/images/avatar/2.jpg' %}" class=" rounded-circle mr-3" alt="">Sarah Smith</td>
+
                                                     <td>Pixel 2</td>
                                                     <td><span>Canada</span></td>
                                                     <td>
@@ -629,34 +637,49 @@
     <!--**********************************
         Scripts
     ***********************************-->
-    <script src="../statics/dashboard/plugins/common/common.min.js"></script>
-    <script src="../statics/dashboard/js/custom.min.js" ></script>
-    <script src="../statics/dashboard/js/settings.js"></script>
-    <script src="../statics/dashboard/js/gleek.js"></script>
-    <script src="../statics/dashboard/js/styleSwitcher.js"></script>
+    <script src="{% static 'dashboard/plugins/common/common.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/custom.min.js' %}" ></script>
+    <script src="{% static 'dashboard/js/settings.js' %}"></script>
+
+    <script src="{% static '/dashboard/js/gleek.js' %}"></script>
+
+    <script src="{% static 'dashboard/js/styleSwitcher.js' %}"></script>
+
 
     <!-- Chartjs -->
-    <script src="./../statics/dashboard/plugins/chart.js/Chart.bundle.min.js"></script>
+    <script src="{% static 'dashboard/plugins/chart.js/Chart.bundle.min.js' %}"></script>
+
     <!-- Circle progress -->
-    <script src="./../statics/dashboard/plugins/circle-progress/circle-progress.min.js"></script>
+    <script src="{% static 'dashboard/plugins/circle-progress/circle-progress.min.js' %}"></script>
+
     <!-- Datamap -->
-    <script src="./../statics/dashboard/plugins/d3v3/index.js"></script>
-    <script src="./../statics/dashboard/plugins/topojson/topojson.min.js"></script>
-    <script src="./../statics/dashboard/plugins/datamaps/datamaps.world.min.js"></script>
+    <script src="{% static 'dashboard/plugins/d3v3/index.js' %}"></script>
+
+    <script src="{% static 'dashboard/plugins/topojson/topojson.min.js' %}"></script>
+
+    <script src="{% static 'dashboard/plugins/datamaps/datamaps.world.min.js' %}"></script>
+
     <!-- Morrisjs -->
-    <script src="./../statics/dashboard/plugins/raphael/raphael.min.js"></script>
-    <script src="./../statics/dashboard/plugins/morris/morris.min.js"></script>
+    <script src="{% static 'dashboard/plugins/raphael/raphael.min.js' %}"></script>
+
+    <script src="{% static 'dashboard/plugins/morris/morris.min.js' %}"></script>
+
     <!-- Pignose Calender -->
-    <script src="./../statics/dashboard/plugins/moment/moment.min.js"></script>
-    <script src="./../statics/dashboard/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
+    <script src="{% static 'dashboard/plugins/moment/moment.min.js' %}"></script>
+
+    <script src="{% static 'dashboard/plugins/pg-calendar/js/pignose.calendar.min.js' %}"></script>
+
     <!-- ChartistJS -->
-    <script src="./../statics/dashboard/plugins/chartist/js/chartist.min.js"></script>
-    <script src="./../statics/dashboard/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
+    <script src="{% static 'dashboard/plugins/chartist/js/chartist.min.js' %}"></script>
+
+    <script src="{% static 'dashboard/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js' %}"></script>
 
 
 
-    <script src="./../statics/dashboard/js/dashboard/dashboard-1.js" ></script>
-    <script src="./../statics/js/dashboard.js" ></script>
+    <script src="{% static 'dashboard/js/dashboard/dashboard-1.js' %}" ></script>
+
+    <script src="{% static 'js/dashboard.js' %}" ></script>
+
 
 </body>
 
