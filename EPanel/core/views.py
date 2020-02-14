@@ -184,11 +184,11 @@ class ProfileView(APIView):
         if Profile.objects.filter(user=user).exists():
             profile = Profile.objects.get(user=user)
             serializer = ProfileSerializer(profile)
-            data = {'data': serializer.data}
+            content = {'profileData': serializer.data}
         else:
-            data = {'error': 'no profile to retrieve!'}
+            content = {'error': 'no profile to retrieve!'}
 
-        return Response(data)
+        return Response(content)
 
     def put(self, request):
         user = request.user
@@ -264,3 +264,4 @@ def user_usage(request):
     }
 
     return Response(content)
+

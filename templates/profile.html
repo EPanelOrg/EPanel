@@ -1,168 +1,244 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>User profile </title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha256-3dkvEK0WLHRJ7/Csr0BZjAWxERc5WH7bdeUya2aXxdU= sha512-+L4yy6FRcDGbXJ9mPG8MT/3UCDzwR9gPeyFNMCtInsol++5m3bk2bXWKdZjvybmohrAsn3Ua5x8gfLnbE1YkOg==" crossorigin="anonymous">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
+
+    <style>
+    body {
+        padding-top: 70px;
+    }
+
+    .othertop{margin-top:10px;}
+    </style>
+</head>
+
+<body>
+
 <div class="container">
-    <div class="row">
-        <div class="col-md-10 ">
-            <form class="form-horizontal">
-                <fieldset>
+    <div class="row my-2">
+        <div class="col-lg-8 order-lg-2">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#messages" data-toggle="tab" class="nav-link">Recent auctions</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit</a>
+                </li>
+            </ul>
+            <div class="tab-content py-4">
+                <div class="tab-pane active" id="profile">
+                    <table class="table table-bordered success">
+                        <thead>
+                        <tr >
+                            <th >Name</th>
+                            <td >kimia</td>
+                        </tr>
+                        <tr >
+                            <th >last Name</th>
+                            <td>mousavi</td>
+                        </tr>
+                        <tr >
+                            <th >gender</th>
+                            <td>female</td>
+                        </tr>
+                        <tr >
+                            <th >Citizenship No.</th>
+                            <td>122</td>
+                        </tr>
+                        <tr>
+                            <th >Address</th>
+                            <td>some where</td>
+                        </tr>
+                        <tr>
+                            <th >Email</th>
+                            <td>kimia@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <th >phone Number</th>
+                            <td>+91 </td>
+                        </tr>
+                        </thead>
+                    </table>
+                    <!--/row-->
+                </div>
+                <div class="tab-pane" id="messages">
 
-                    <!-- Form Name -->
-                    <legend>User profile form requirement</legend>
+                    <div class="col-md-12">
+                        <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> Recent Auction</h5>
+                        <table class="table table-sm table-hover table-striped">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <strong>buy</strong>  auction number 1
+                                </td>
+                            </tr>
 
-                    <!-- Text input-->
 
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="Name (Full name)">Name (Full name)</label>
-                        <div class="col-md-4">
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-user">
-                                    </i>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane" id="edit">
+                    <form role="form">
+
+                        <div class="form-group row">
+                            <label class="col-md-4 control-label" id="Name ">Name</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-user">
+                                        </i>
+                                    </div>
+                                    <input id="Name" name="Name " type="text" placeholder="Name" class="form-control input-md">
                                 </div>
-                                <input id="Name (Full name)" name="Name (Full name)" type="text" placeholder="Name (Full name)" class="form-control input-md">
                             </div>
-
-
                         </div>
-
-
-                    </div>
-
-                    <!-- File Button -->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="Upload photo">Upload photo</label>
-                        <div class="col-md-4">
-                            <input id="Upload photo" name="Upload photo" class="input-file" type="file">
-                        </div>
-                    </div>
-
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="Date Of Birth">Date Of Birth</label>
-                        <div class="col-md-4">
-
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-birthday-cake"></i>
-
+                        <div class="form-group row">
+                            <label class="col-md-4 control-label" id="LastName ">last Name</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-user">
+                                        </i>
+                                    </div>
+                                    <input id="LastName" lastName="last Name " type="text" placeholder="last Name " class="form-control input-md">
                                 </div>
-                                <input id="Date Of Birth" name="Date Of Birth" type="text" placeholder="Date Of Birth" class="form-control input-md">
-                            </div>
-
-
-                        </div>
-                    </div>
-
-
-                    <!-- Multiple Radios (inline) -->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" >Gender</label>
-                        <div class="col-md-4">
-                            <label class="radio-inline" for="Gender-0">
-                                <input type="radio" name="Gender" id="Gender-0" value="1" checked="checked">
-                                Male
-                            </label>
-                            <label class="radio-inline" for="Gender-1">
-                                <input type="radio" name="Gender" id="Gender-1" value="2">
-                                Female
-                            </label>
-                            <label class="radio-inline" for="Gender-2">
-                                <input type="radio" name="Gender" id="Gender-2" value="3">
-                                Other
-                            </label>
-                        </div>
-                    </div>
-
-
-
-
-
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="Primary Occupation">Primary Occupation</label>
-                        <div class="col-md-4">
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-briefcase"></i>
-
-                                </div>
-                                <input id="Primary Occupation" name="Primary Occupation" type="text" placeholder="Primary Occupation" class="form-control input-md">
-                            </div>
-
-
-                        </div>
-                    </div>
-
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="Phone number ">Phone number </label>
-                        <div class="col-md-4">
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-phone"></i>
-
-                                </div>
-                                <input id="Phone number " name="Phone number " type="text" placeholder=" Phone number " class="form-control input-md">
-
                             </div>
 
                         </div>
-                    </div>
+                        <div class="form-group row">
+                            <label class="col-md-4 control-label" for="Date Of Birth">Date Of Birth</label>
+                            <div class="col-md-4">
 
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="Email Address">Email Address</label>
-                        <div class="col-md-4">
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-envelope-o"></i>
+                                <div class="input-group row">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-birthday-cake"></i>
+
+                                    </div>
+                                    <input id="Date Of Birth" name="Date Of Birth" type="text" placeholder="Date Of Birth" class="form-control input-md">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-4 control-label" id="Gender">Gender</label>
+                            <div class="col-md-4">
+                                <label class="radio-inline" for="Gender-0">
+                                    <input type="radio" name="Gender" id="Gender-0" value="1" checked="checked">
+                                    Male
+                                </label>
+                                <label class="radio-inline" for="Gender-1">
+                                    <input type="radio" name="Gender" id="Gender-1" value="2">
+                                    Female
+                                </label>
+                                <label class="radio-inline" for="Gender-2">
+                                    <input type="radio" name="Gender" id="Gender-2" value="3">
+                                    Other
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-4 control-label" for="Phone number ">Phone number </label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-phone"></i>
+
+                                    </div>
+                                    <input id="Phone number " name="Phone number " type="text" placeholder=" Phone number " class="form-control input-md">
 
                                 </div>
-                                <input id="Email Address" name="Email Address" type="text" placeholder="Email Address" class="form-control input-md">
-
                             </div>
-
                         </div>
-                    </div>
+                        <div class="form-group row">
+                            <label class="col-md-4 control-label" for="Email Address">Email Address</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-envelope-o"></i>
 
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="Citizenship No.">Citizenship No.</label>
-                        <div class="col-md-4">
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-sticky-note-o"></i>
+                                    </div>
+                                    <input id="Email Address" name="Email Address" type="text" placeholder="Email Address" class="form-control input-md">
 
                                 </div>
-                                <input id="Citizenship No." name="Citizenship No." type="text" placeholder="Citizenship No." class="form-control input-md">
 
                             </div>
-
-
                         </div>
-                    </div>
 
+                        <div class="form-group row">
+                            <label class="col-md-4 control-label" for="Citizenship No.">Citizenship No.</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-sticky-note-o"></i>
 
+                                    </div>
+                                    <input id="Citizenship No." name="Citizenship No." type="text" placeholder="Citizenship No." class="form-control input-md">
 
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" ></label>
-                        <div class="col-md-4">
-                            <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-thumbs-up"></span> Submit</a>
-                            <a href="#" class="btn btn-danger" value=""><span class="glyphicon glyphicon-remove-sign"></span> Clear</a>
-
+                                </div>
+                            </div>
                         </div>
-                    </div>
 
-                </fieldset>
-            </form>
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Address</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" value="" placeholder="Address">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Username</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" placeholder="Username">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Password</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="password" placeholder="pass">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="password" placeholder="repeat">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" ></label>
+                            <div class="col-md-4">
+                                <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-thumbs-up"></span> Submit</a>
+                                <a href="#" class="btn btn-danger" value=""><span class="glyphicon glyphicon-remove-sign"></span> Clear</a>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="col-md-2 hidden-xs">
-            <img src="http://websamplenow.com/30/userprofile/images/avatar.jpg" class="img-responsive img-thumbnail ">
-        </div>
-
 
     </div>
 </div>
-<!-- jQuery Version 1.11.1 -->
-<script src="js/jquery.js"></script>
+</body>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+</html>
