@@ -1,6 +1,7 @@
 $(function () {
     creditAjax();
     homesAjax();
+    usageAjax();
 
     setInterval(function () {
         creditAjax();
@@ -26,6 +27,24 @@ function creditAjax() {
     })
     ;
 }
+
+function usageAjax() {
+
+    $.ajax
+    ({
+        type: "GET",
+        url: "http://127.0.0.1:8000/my-usage/",
+        dataType: 'json',
+        headers: {
+            "Authorization": "Bearer " + localStorage.token
+        },
+        success: function (data, status) {
+            $("#today-usage").html(data['users_daily_usage'])
+        }
+    })
+    ;
+}
+
 
 function homesAjax() {
 
