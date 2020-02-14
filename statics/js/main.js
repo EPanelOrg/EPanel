@@ -375,7 +375,9 @@ AOS.init({
                 // }
             }).done(function (data) {
             // get token and go to dashboard
-            alert("token: " + data.access);
+            localStorage.token = data.access;
+            // alert('Got a token from the server! Token: ' + localStorage.token);
+            window.location.replace("/main");
         });
     });
 

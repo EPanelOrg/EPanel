@@ -1,10 +1,11 @@
 $(function () {
+    alert("dashboard here!!!!!!!!!!!!!!!!!!!!!!!")
     creditAjax();
     homesAjax();
 
     setInterval(function () {
-        creditAjax()
-        homesAjax()
+        creditAjax();
+        homesAjax();
 
     }, 10000)
 
