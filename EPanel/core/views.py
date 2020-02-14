@@ -2,19 +2,23 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-from EPanel.core.models import Device
+from EPanel.core.models import *
 from django.db.utils import IntegrityError
 from EPanel.core.serializers import DeviceSerializer
-
+from django.contrib.auth.models import User
+from django.contrib.auth import login, authenticate
+from rest_framework.decorators import api_view, permission_classes
+from django.shortcuts import render, redirect
 from .models import Demand_supply
-from .serializers import DS_Serializer
+from .serializers import DS_Serializer, HomeSerializer, SectionSerializer, ProfileSerializer
+from django.views.decorators.clickjacking import xframe_options_exempt
 
 class HelloView(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self, request):
-        content = {'message': 'bye, World!'}
-        return Response(content)
+        print(type(request.user))
+        return Response({})
 
 
 class DeviceView(APIView):
@@ -54,7 +58,6 @@ class DeviceView(APIView):
                 serialized_data = {'data': serializer_class.data}['data']
                 content.append(serialized_data)
 
-
         return Response(content)
 
     def put(self, request):
@@ -82,13 +85,197 @@ class DeviceView(APIView):
             content = {"error": str(ex)}
 
         return Response(content)
+
+
+class PlanView(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request):
+        pass
+
+
 class ListDemands(APIView):
-    # permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
 
     def get(self, request):
-
         homeIDs = Demand_supply.objects.all()
         serializer = DS_Serializer(homeIDs, many=True)
-        serialized_data = { 'data':serializer.data}
+        serialized_data = {'data': serializer.data}
         return Response(serialized_data)
 
+    def post(self, request):
+        params = request.data
+        serializer = DS_Serializer(data=params)
+        result = dict()
+        if serializer.is_valid():
+            create_result = serializer.save()
+            print(create_result)
+        else:
+            result['error'] = serializer.errors
+        return Response(result)
+
+
+class HomeView(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request):
+        user = request.user
+        home = Home.objects.create(owner=user)
+        print(type(home))
+        return Response({'msg': 'home successfully created!'})
+
+    def get(self, request):
+        user = request.user
+        homes = Home.objects.filter(owner=user)
+        serializer = HomeSerializer(homes, many=True)
+        serialized_data = {'data': serializer.data}
+
+        return Response(serialized_data)
+
+
+class SectionView(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request):
+        result = dict()
+        user = request.user
+        home_id = request.data['home_id']
+
+        try:
+            home = Home.objects.get(pk=home_id)
+        except:
+            result = {"error": "access very denied!"}
+            return Response(result)
+
+        if home.owner == user:
+            my_object = Section.objects.create(home=home)
+            result = {"msg": "section added to requested home!"}
+
+        else:
+            result = {"error": "access denied!"}
+        return Response(result)
+
+    def get(self, request):
+        user = request.user
+        homes = Home.objects.filter(owner=user)
+        sections = Section.objects.filter(home__in=homes)
+        serializer = SectionSerializer(sections, many=True)
+        serialized_data = {'data': serializer.data}
+
+        return Response(serialized_data)
+
+
+class ProfileView(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request):
+        data = request.data
+
+        res, created = Profile.objects.get_or_create(user=request.user, email=data['email'], credit=data['credit'])
+        if created:
+            content = {'msg': 'profile created successfully!'}
+        else:
+            content = {'error': 'user profile already exists! maybe you want to modify it?'}
+
+        return Response(content)
+
+    def get(self, request):
+        user = request.user
+        if Profile.objects.filter(user=user).exists():
+            profile = Profile.objects.get(user=user)
+            serializer = ProfileSerializer(profile)
+            data = {'data': serializer.data}
+        else:
+            data = {'error': 'no profile to retrieve!'}
+
+        return Response(data)
+
+    def put(self, request):
+        user = request.user
+        if Profile.objects.filter(user=user).exists():
+            profile = Profile.objects.get(user=user)
+            profile.email = request.data['email']
+            profile.credit = request.data['credit']
+            profile.save()
+            content = {'msg': 'profile updated successfully!'}
+        else:
+            content = {'error': 'you should add profile for this user first!'}
+
+        return Response(content)
+
+    def delete(self, request):
+        user = request.user
+        if Profile.objects.filter(user=user).exists():
+            Profile.objects.get().delete()
+            content = {'msg': 'profile deleted successfully!'}
+        else:
+            content = {'error': 'no profile to delete!'}
+
+        return Response(content)
+
+
+@api_view(["POST"])
+def signup(request):
+    params = request.data
+    username = params['username']
+    password = params['password']
+    email = params['email']
+
+    try:
+        user, is_new = User.objects.get_or_create(username=username, email=email)
+        if is_new:
+            user.set_password(password)
+            user.save()
+        return Response({"result": 1})
+    except IntegrityError:
+        return Response({"result": 0})
+
+
+def index(request):
+    return render(request, 'index.html')
+
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def get_credit(request):
+    user = request.user
+    credit = Profile.objects.get(user=user).credit
+    content = {'credit-amount': credit}
+
+    return Response(content)
+
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def get_homes(request):
+    print(request.user)
+    homes = Home.objects.all()
+
+    content = {'homes-count': len(homes)}
+
+    return Response(content)
+
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def user_usage(request):
+    user = request.user
+    homes = Home.objects.filter(owner=user)
+    user_daily_usage = 0
+    for home in homes:
+        user_daily_usage += home.get_home_daily_usage()
+
+    content = {
+        'users_daily_usage': user_daily_usage
+    }
+
+    return Response(content)
+
+def main_page(request):
+    # return render(request, 'index.html', context=my_dict)
+    return render(request, 'information.html')
+
+@xframe_options_exempt
+def dashboard(request):
+    # return render(request, 'index.html', context=my_dict)
+    return render(request, 'dashBoard.html')

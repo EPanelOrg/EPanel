@@ -18,16 +18,26 @@ from django.urls import path
 from EPanel.core import views
 from rest_framework_simplejwt import views as jwt_views
 
-
 urlpatterns = [
     path('token', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('register/', views.signup, name='signup'),
     path('token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
 
     path('admin/', admin.site.urls),
     path('hello/', views.HelloView.as_view(), name='hello'),
     path('device/<str:pk>', views.DeviceView.as_view(), name='device'),
     path('device/', views.DeviceView.as_view(), name='device'),
+    path('home/', views.HomeView.as_view(), name='home'),
+    path('section/', views.SectionView.as_view(), name='home'),
+    path('get-credit/', views.get_credit, name='credit'),
+    path('get-homes/', views.get_homes, name='homes'),
+    path('my-usage/', views.user_usage, name='user usage'),
+    path('main/', views.main_page, name='main page'),
+    path('dashboard/', views.dashboard, name='main page'),
 
+    path('profile/', views.ProfileView.as_view(), name='credit'),
 
-    path('list/', views.ListDemands.as_view(), name='list'),
+    path('ds/', views.ListDemands.as_view(), name='list'),
+
+    path('', views.index, name="homepage")
 ]

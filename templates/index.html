@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <title>KMF Power Auction</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.timepicker.css' %}">
+
+
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="#"><img src="{% static 'images/LOGO.png' %}" width="70px" height="70px"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+                aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active"><a href="#wwd" class="nav-link">What we do?</a></li>
+                {#                <li class="nav-item"><a href="#hiw" class="nav-link">How it works?</a></li>#}
+                <li class="nav-item"><a href="#wu" class="nav-link">Why us?</a></li>
+                <li class="nav-item"><a href="#akmf" class="nav-link">About KMF</a></li>
+                <li class="nav-item"><a href="#cu" class="nav-link">Contact us</a></li>
+                {#                <li class="nav-item cta mr-md-1"><a href="../jobpply/new-post.html" class="nav-link">Post a Job</a></li>#}
+                {#                <li class="nav-item cta cta-colored"><a href="../jobpply/job-post.html" class="nav-link">Want a Job</a>#}
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- END nav -->
+
+<div class="hero-wrap js-fullheight">
+    <div class="overlay"></div>
+    <div class="container-fluid px-0">
+        <div class="row d-md-flex no-gutters slider-text align-items-end js-fullheight justify-content-end">
+            <img class="one-third align-self-end order-md-last img-fluid"
+                 src="{% static 'images/bg3_.png' %}" alt="">
+            <div class="one-forth d-flex align-items-center ftco-animate js-fullheight">
+                <div class="text mt-5">
+                    <h3><p class="mb-4 mt-5 pt-10">Next Auction Starts In: <span class="number" id="timer">0</span></p>
+                    </h3>
+                    <h1 class="mb-2">KMF <span style="font-size: xx-large">Power Auction System !</span></h1>
+                    <h3 class="mb-4">With KMF you can trade good electricity !</h3>
+
+                    <div class="ftco-search">
+                        <div class="row">
+                            <div class="col-md-12 nav-link-wrap">
+                                <div class="nav nav-pills text-center" id="v-pills-tab" role="tablist"
+                                     aria-orientation="vertical">
+                                    <a class="nav-link active mr-md-1" id="v-pills-1-tab" data-toggle="pill"
+                                       href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Sign
+                                        In</a>
+
+                                    <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2"
+                                       role="tab" aria-controls="v-pills-2" aria-selected="false">Sign Up</a>
+
+                                </div>
+                            </div>
+                            <div class="col-md-12 tab-wrap">
+
+                                <div class="tab-content p-4" id="v-pills-tabContent">
+
+                                    <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel"
+                                         aria-labelledby="v-pills-nextgen-tab">
+                                        <form action="#" class="search-job">
+                                            <div class="row no-gutters">
+                                                <div class="col-md mr-md-2">
+                                                    <div class="form-group">
+                                                        <div class="form-field">
+                                                            <div class="icon"><span class="icon-user"></span></div>
+                                                            <input id="login-username" type="text" class="form-control"
+                                                                   placeholder="Username">
+{#                                                            <p id="temppp">0000</p>#}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {#                                                <div class="col-md mr-md-2">#}
+                                                {#                                                    <div class="form-group">#}
+                                                {#                                                        <div class="form-field">#}
+                                                {#                                                            <div class="select-wrap">#}
+                                                {#                                                                <div class="icon"><span#}
+                                                {#                                                                        class="ion-ios-arrow-down"></span></div>#}
+                                                {#                                                                <select name="" id="" class="form-control">#}
+                                                {#                                                                    <option value="">Category</option>#}
+                                                {#                                                                    <option value="">Full Time</option>#}
+                                                {#                                                                    <option value="">Part Time</option>#}
+                                                {#                                                                    <option value="">Freelance</option>#}
+                                                {#                                                                    <option value="">Internship</option>#}
+                                                {#                                                                    <option value="">Temporary</option>#}
+                                                {#                                                                </select>#}
+                                                {#                                                            </div>#}
+                                                {#                                                        </div>#}
+                                                {#                                                    </div>#}
+                                                {#                                                </div>#}
+                                                <div class="col-md mr-md-2">
+                                                    <div class="form-group">
+                                                        <div class="form-field">
+                                                            <div class="icon"><span class="icon-lock"></span>
+                                                            </div>
+                                                            <input id="login-password" type="password" class="form-control"
+                                                                   placeholder="Password">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md">
+                                                    <div class="form-group">
+                                                        <div class="form-field">
+                                                            <button id="login-btn" type="submit"
+                                                                    class="form-control btn btn-secondary">Ok !
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="v-pills-2" role="tabpanel"
+                                         aria-labelledby="v-pills-performance-tab">
+                                        <form action="#" class="search-job">
+                                            <div class="row">
+                                                <div class="col-md">
+                                                    <div class="form-group">
+                                                        <div class="form-field">
+                                                            <div class="icon"><span class="icon-user"></span></div>
+                                                            <input id="register-username" type="text" class="form-control"
+                                                                   placeholder="Username">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {#                                                <div class="col-md">#}
+                                                {#                                                    <div class="form-group">#}
+                                                {#                                                        <div class="form-field">#}
+                                                {#                                                            <div class="select-wrap">#}
+                                                {#                                                                <div class="icon"><span#}
+                                                {#                                                                        class="ion-ios-arrow-down"></span></div>#}
+                                                {#                                                                <select name="" id="" class="form-control">#}
+                                                {#                                                                    <option value="">Category</option>#}
+                                                {#                                                                    <option value="">Full Time</option>#}
+                                                {#                                                                    <option value="">Part Time</option>#}
+                                                {#                                                                    <option value="">Freelance</option>#}
+                                                {#                                                                    <option value="">Internship</option>#}
+                                                {#                                                                    <option value="">Temporary</option>#}
+                                                {#                                                                </select>#}
+                                                {#                                                            </div>#}
+                                                {#                                                        </div>#}
+                                                {#                                                    </div>#}
+                                                {#                                                </div>#}
+                                                <div class="col-md">
+                                                    <div class="form-group">
+                                                        <div class="form-field">
+                                                            <div class="icon"><span class="icon-lock"></span>
+                                                            </div>
+                                                            <input id="register-password" type="password" class="form-control"
+                                                                   placeholder="Password">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md">
+                                                    <div class="form-group">
+                                                        <div class="form-field">
+                                                            <div class="icon"><span class="icon-envelope"></span>
+                                                            </div>
+                                                            <input id="register-email" type="email" class="form-control"
+                                                                   placeholder="Email">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md">
+                                                    <div class="form-group">
+                                                        <div class="form-field">
+                                                            <button id="register-btn" type="submit"
+                                                                    class="form-control btn btn-secondary">OK !
+                                                            </button>
+                                                            <p id="register-error" style="color: darkred"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="wwd" class="ftco-section services-section bg-primary">
+    <div class="container">
+        <div class="row d-flex">
+            <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+                <div class="media block-6 services d-block">
+                    <div class="icon"><img src="{% static 'fonts/flaticon/font/login.svg' %}" width="200px"
+                                           height="300px"></div>
+                    <div class="media-body">
+                        <h3 class="heading mb-3">Sign Up</h3>
+                        <p>First of all create an account for yourself and complete your profile. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+                <div class="media block-6 services d-block">
+                    <div class="icon"><img src="{% static 'fonts/flaticon/font/electricity.svg' %}" width="200px"
+                                           height="300px"></div>
+                    <div class="media-body">
+                        <h3 class="heading mb-3">Add Homes</h3>
+                        <p>Add homes with rooms and define your electrical devices in them. Define your state(seller or
+                            buyer) in the next Auction!</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+                <div class="media block-6 services d-block">
+                    <div class="icon"><img src="{% static 'fonts/flaticon/font/neural.svg' %}" width="200px"
+                                           height="300px"></div>
+                    <div class="media-body">
+                        <h3 class="heading mb-3">Auction !</h3>
+                        <p>With our Matching Algorithm, you will be matched to another suitable user for trading
+                            electricity with best profit !</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+                <div class="media block-6 services d-block">
+                    <div class="icon"><img src="{% static 'fonts/flaticon/font/architecture-and-city.svg' %}"
+                                           width="200px" height="300px"></div>
+                    <div class="media-body">
+                        <h3 class="heading mb-3">Done !</h3>
+                        <p>Now that you've got the best profit and electricity, you and your home are happy :)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{#<section id="hiw" class="ftco-section">#}
+{#    <div class="wrapper">#}
+{#			<div class="image-holder">#}
+{#				<img src="images/form-wizard.jpg" alt="">#}
+{#			</div>#}
+{#            <div class="form-content">#}
+{#            	<form action="#">#}
+{#            		<div id="wizard">#}
+{#	            		<!-- SECTION 1 -->#}
+{#		                <h4></h4>#}
+{#		                <section>#}
+{#	                		<h3>Event Information</h3>#}
+{#							<div class="info">#}
+{#								<div class="info-item">#}
+{#									<span class="lnr lnr-calendar-full"></span>#}
+{#									<span class="unit">Date:</span>#}
+{#								    August 1 @ 8:00 am#}
+{#								</div>#}
+{#								<div class="info-item">#}
+{#									<span class="lnr lnr-clock"></span>#}
+{#									<span class="unit">Time:</span>#}
+{#								    8:00 am - 5:00 pm#}
+{#								</div>#}
+{#								<div class="info-item">#}
+{#									<span class="lnr lnr-apartment"></span>#}
+{#									<span class="unit">Venue:</span>#}
+{#								    National Conference#}
+{#								</div>#}
+{#								<div class="info-item">#}
+{#									<span class="lnr lnr-map"></span>#}
+{#									<span class="unit">Address:</span>#}
+{#								    No 40 Baria Sreet 133/2#}
+{#								</div>#}
+{#								<div class="info-item">#}
+{#									<span class="lnr lnr-earth"></span>#}
+{#									<span class="unit">Website: </span>#}
+{#								    Info@yourwev.com#}
+{#								</div>#}
+{#							</div>#}
+{#		                </section>#}
+{##}
+{#						<!-- SECTION 2 -->#}
+{#		                <h4></h4>#}
+{#		                <section>#}
+{#							<h3>Set The Event</h3>#}
+{#							<div class="form-group">#}
+{#								<div class="form-price">#}
+{#									<label for="">Price:</label>#}
+{#									<span>$270</span>#}
+{#								</div>#}
+{#								<div class="form-select">#}
+{#									<label for="">People:</label>#}
+{#									<div class="form-holder">#}
+{#										<select name="" id="" class="form-control">#}
+{#											<option value="1" class="option">1</option>#}
+{#											<option value="2" class="option">2</option>#}
+{#											<option value="3" class="option">3</option>#}
+{#											<option value="4" class="option">4</option>#}
+{#											<option value="5" class="option">5</option>#}
+{#											<option value="6" class="option">6</option>#}
+{#											<option value="7" class="option">7</option>#}
+{#											<option value="8" class="option">8</option>#}
+{#											<option value="9" class="option">9</option>#}
+{#											<option value="10" class="option">10</option>#}
+{#										</select>#}
+{#										<i class="zmdi zmdi-chevron-down"></i>#}
+{#									</div>#}
+{#								</div>#}
+{#							</div>#}
+{#							<div class="form-wrapper">#}
+{#								<label for="">Name:</label>#}
+{#								<input type="text" class="form-control">#}
+{#							</div>#}
+{#							<div class="form-wrapper">#}
+{#								<label for="" class="label-input">E-mail:</label>#}
+{#								<input type="text" class="form-control">#}
+{#							</div>#}
+{#							<div class="form-wrapper">#}
+{#								<label for="" class="label-input">Phone:</label>#}
+{#								<input type="text" class="form-control">#}
+{#							</div>#}
+{#							<div class="form-wrapper last">#}
+{#								<label for="" class="label-input">Address:</label>#}
+{#								<input type="text" class="form-control">#}
+{#							</div>#}
+{#		                </section>#}
+{##}
+{#		                <!-- SECTION 3 -->#}
+{#		                <h4></h4>#}
+{#		                <section>#}
+{#		                	<h3 style="margin-bottom: 50px;">Request from You</h3>#}
+{#		                	<div class="request">#}
+{#		                		<div class="special-request">#}
+{#	                				<label for="">Special Request:</label>#}
+{#		                			<input type="text" class="form-control">#}
+{#		                		</div>#}
+{#		                		<input type="text" class="form-control" style="width: 100%;">#}
+{#		                		<div class="question-request"><span>Would you like your event staffed? </span>#}
+{#		                			<input type="text" class="form-control" style="display: inline-block;">#}
+{#		                			<span>How many associates? </span>#}
+{#		                			<input type="text" class="form-control" style="display: inline-block;">#}
+{#		                			<span>(Adiditional rates will apply for events requiring staff)</span>#}
+{#		                		</div>#}
+{#		                	</div>#}
+{#		                	<div class="checkbox">#}
+{#								<label>#}
+{#									<input type="checkbox" checked> Please accept terms and conditions ?#}
+{#									<span class="checkmark"></span>#}
+{#								</label>#}
+{#							</div>#}
+{#		                </section>#}
+{#	            	</div>#}
+{#            	</form>#}
+{##}
+{#				<!-- SOCIAL -->#}
+{#                <div class="social">#}
+{#					<a href="#">#}
+{#						<i class="zmdi zmdi-facebook"></i>#}
+{#					</a>#}
+{#					<a href="#">#}
+{#						<i class="zmdi zmdi-twitter"></i>#}
+{#					</a>#}
+{#					<a href="#">#}
+{#						<i class="zmdi zmdi-tumblr"></i>#}
+{#					</a>#}
+{#					<a href="#">#}
+{#						<i class="zmdi zmdi-instagram"></i>#}
+{#					</a>#}
+{#				</div>#}
+{#            </div>#}
+{#		</div>#}
+{#</section>#}
+
+<section id="wu" class="ftco-section img"
+         style="background-image: url(../statics/images/bg_1.jpg); background-position: top center;">
+    <div class="container">
+        <div class="row d-flex">
+            <div class="col-md-2 d-flex align-self-stretch ftco-animate">
+                <div class="media block-6 services d-block">
+                    <div class="icon"><img src="{% static 'fonts/flaticon/font/think.svg' %}" width="300px"
+                                           height="300px"></div>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex"></div>
+            <div class="col-md-6 d-flex align-self-stretch ftco-animate">
+                <div class="media block-6 services d-block">
+                    {#                    <div class="icon"><img src="{% static 'fonts/flaticon/font/electricity.svg' %}" width="200px" height="300px"></div>#}
+                    <div class="media-body">
+                        <h2 class="heading mb-4">Best Profit! + Suitable Matching</h2>
+                        <h4 style="color: black;">we've got the best alg becuz blah blah blah blah blah...</h4>
+
+                    </div>
+                </div>
+            </div>
+            {#            <div class="col-md-3 d-flex align-self-stretch ftco-animate">#}
+            {#                <div class="media block-6 services d-block">#}
+            {#                    <div class="icon"><img src="{% static 'fonts/flaticon/font/neural.svg' %}" width="200px" height="300px"></div>#}
+            {#                    <div class="media-body">#}
+            {#                        <h3 class="heading mb-3">Auction !</h3>#}
+            {#                        <p>With our Matching Algorithm, you will be matched to another suitable user for trading electricity with best profit !</p>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </div>#}
+            {#            <div class="col-md-3 d-flex align-self-stretch ftco-animate">#}
+            {#                <div class="media block-6 services d-block">#}
+            {#                    <div class="icon"><img src="{% static 'fonts/flaticon/font/architecture-and-city.svg' %}" width="200px" height="300px"></div>#}
+            {#                    <div class="media-body">#}
+            {#                        <h3 class="heading mb-3">Done !</h3>#}
+            {#                        <p>Now that you've got the best profit and electricity, you and your home are happy :)</p>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </div>#}
+        </div>
+    </div>
+</section>
+
+<section id="akmf" class="ftco-section services-section bg-light">
+
+    <div class="container">
+        <div class="row d-flex">
+            <div class="col-md-5 d-flex align-self-stretch ftco-animate">
+                <div class="media block-6 services d-block">
+                    <div class="icon"><img src="{% static 'fonts/flaticon/font/kimia.svg' %}" width="200px"
+                                           height="300px"></div>
+                    <div class="media-body">
+                        <h3 class="heading mb-3"><span style="color:#239dff; font-size: xx-large;">K</span>imia Mousavi</h3>
+                        <p style="color: midnightblue">Im kimia thats all u need to know :p</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 d-flex align-self-stretch ftco-animate">
+                <div class="media block-6 services d-block">
+                    <div class="icon"><img src="{% static 'fonts/flaticon/font/mehdi.svg' %}" width="200px"
+                                           height="300px"></div>
+                    <div class="media-body">
+                        <h3 class="heading mb-3"><span style="color:#239dff; font-size: xx-large;">M</span>ehdi Aghajanlou</h3>
+                        <p style="color: midnightblue">called by Mr.Lou :))) </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-1 d-flex align-self-stretch ftco-animate">
+                <div class="media block-6 services d-block">
+                    <div class="icon"><img src="{% static 'fonts/flaticon/font/faranak.svg' %}" width="200px"
+                                           height="300px"></div>
+                    <div class="media-body">
+                        <h3 class="heading mb-3"><span style="color:#239dff; font-size: xx-large;">F</span>aranak Heydari</h3>
+                        <p style="color: midnightblue">im faranak blah blah blah</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section id="cu">
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">About</h2>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
+                            there
+                            live the blind texts.</p>
+                        <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+                            <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Employers</h2>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="py-2 d-block">How it works</a></li>
+                            <li><a href="#" class="py-2 d-block">Register</a></li>
+                            <li><a href="#" class="py-2 d-block">Post a Job</a></li>
+                            <li><a href="#" class="py-2 d-block">Advance Skill Search</a></li>
+                            <li><a href="#" class="py-2 d-block">Recruiting Service</a></li>
+                            <li><a href="#" class="py-2 d-block">Blog</a></li>
+                            <li><a href="#" class="py-2 d-block">Faq</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4 ml-md-4">
+                        <h2 class="ftco-heading-2">Workers</h2>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="py-2 d-block">How it works</a></li>
+                            <li><a href="#" class="py-2 d-block">Register</a></li>
+                            <li><a href="#" class="py-2 d-block">Post Your Skills</a></li>
+                            <li><a href="#" class="py-2 d-block">Job Search</a></li>
+                            <li><a href="#" class="py-2 d-block">Emploer Search</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Have a Questions?</h2>
+                        <div class="block-23 mb-3">
+                            <ul>
+                                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span>
+                                </li>
+                                <li><a href="#"><span class="icon icon-phone"></span><span
+                                        class="text">+2 392 3929 210</span></a></li>
+                                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+
+                    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                        All rights reserved | This template is made with <i class="icon-heart text-danger"
+                                                                            aria-hidden="true"></i> by <a
+                                href="https://colorlib.com" target="_blank">Colorlib</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</section>
+
+
+<!-- loader -->
+{#<div id="ftco-loader" class="show fullscreen">#}
+{#    <svg class="circular" width="48px" height="48px">#}
+{#        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>#}
+{#        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"#}
+{#                stroke="#F96D00"/>#}
+{#    </svg>#}
+{#</div>#}
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'js/aos.js' %}"></script>
+<script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+<script src="{% static 'js/scrollax.min.js' %}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="{% static 'js/google-map.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+
+</body>
+</html>
