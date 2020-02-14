@@ -408,7 +408,7 @@ AOS.init({
             }).done(function (data) {
             if (data.result === 1) {
                 alert("registered successfully");
-                $(location).attr('href', "dashboard");
+                $(location).attr('href', "main");
 
             } else {
                 alert("duplicate username!");

@@ -248,6 +248,7 @@ def get_credit(request):
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def get_homes(request):
+    print(request.user)
     homes = Home.objects.all()
 
     content = {'homes-count': len(homes)}
