@@ -45,40 +45,43 @@
                 </li>
             </ul>
             <div class="tab-content py-4">
-                <div class="tab-pane active" id="profile">
-                    <table class="table table-bordered success">
-                        <thead>
-                        <tr >
-                            <th >Name</th>
-                            <td >kimia</td>
-                        </tr>
-                        <tr >
-                            <th >last Name</th>
-                            <td>mousavi</td>
-                        </tr>
-                        <tr >
-                            <th >gender</th>
-                            <td>female</td>
-                        </tr>
-                        <tr >
-                            <th >Citizenship No.</th>
-                            <td>122</td>
-                        </tr>
-                        <tr>
-                            <th >Address</th>
-                            <td>some where</td>
-                        </tr>
-                        <tr>
-                            <th >Email</th>
-                            <td>kimia@gmail.com</td>
-                        </tr>
-                        <tr>
-                            <th >phone Number</th>
-                            <td>+91 </td>
-                        </tr>
-                        </thead>
-                    </table>
-                    <!--/row-->
+                <div class="tab-pane active" id="p">
+                    <div class="tab-pane" id="profile">
+                        <h1 >username</h1>
+                        <br>
+                        <form role="form">
+                            <div class="form-group row">
+                                <label class="col-md-4 control-label" >Name</label>
+                                <p id="pName"></p>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-4 control-label" >last Name</label>
+                                <p id="pLastnaem"></p>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-4 control-label" >Date Of Birth</label>
+                                <p id="pBirhDate"></p>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-4 control-label">Gender</label>
+                                <p id="pGender"></p>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-md-4 control-label" for="Phone number ">Phone number </label>
+                                <p id="pPhoenNum"></p>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-4 control-label" for="Email Address">Email Address</label>
+                                <p id="pEmail"></p>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-md-4 control-label" for="Citizenship No.">Citizenship No.</label>
+                                <p id="pCitizenNo"></p>
+                            </div>
+                        </form>
+                    </div>
                 </div>
                 <div class="tab-pane" id="messages">
 
@@ -91,8 +94,6 @@
                                     <strong>buy</strong>  auction number 1
                                 </td>
                             </tr>
-
-
                             </tbody>
                         </table>
                     </div>
@@ -101,7 +102,7 @@
                     <form role="form">
 
                         <div class="form-group row">
-                            <label class="col-md-4 control-label" id="Name ">Name</label>
+                            <label class="col-md-4 control-label"  >Name</label>
                             <div class="col-md-4">
                                 <div class="input-group">
                                     <div class="input-group-addon">
@@ -113,28 +114,28 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-4 control-label" id="LastName ">last Name</label>
+                            <label class="col-md-4 control-label" >last Name</label>
                             <div class="col-md-4">
                                 <div class="input-group">
                                     <div class="input-group-addon">
                                         <i class="fa fa-user">
                                         </i>
                                     </div>
-                                    <input id="LastName" lastName="last Name " type="text" placeholder="last Name " class="form-control input-md">
+                                    <input id="LastName"  type="text" placeholder="last Name " class="form-control input-md">
                                 </div>
                             </div>
 
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-4 control-label" for="Date Of Birth">Date Of Birth</label>
+                            <label class="col-md-4 control-label" >Date Of Birth</label>
                             <div class="col-md-4">
 
-                                <div class="input-group row">
+                                <div class="input-group">
                                     <div class="input-group-addon">
-                                        <i class="fa fa-birthday-cake"></i>
-
+                                        <i class="fa fa-birthday-cake">
+                                        </i>
                                     </div>
-                                    <input id="Date Of Birth" name="Date Of Birth" type="text" placeholder="Date Of Birth" class="form-control input-md">
+                                    <input id="BDate"  type="text" placeholder="Birth day date " class="form-control input-md">
                                 </div>
                             </div>
                         </div>
@@ -197,33 +198,44 @@
                                 </div>
                             </div>
                         </div>
-
-
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Address</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="text" value="" placeholder="Address">
+                            <label class="col-md-4 control-label" id="Username ">Username</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-user">
+                                        </i>
+                                    </div>
+                                    <input id="Username" type="text" placeholder="Username " class="form-control input-md">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-4 control-label" id="password ">password</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-lock">
+                                        </i>
+                                    </div>
+                                    <input id="password"  type="text" placeholder="Username " class="form-control input-md">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-4 control-label" id="repeat ">repeat</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-lock">
+                                        </i>
+                                    </div>
+                                    <input id="repeat"  type="text" placeholder="repeat " class="form-control input-md">
+                                </div>
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Username</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="text" placeholder="Username">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Password</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="password" placeholder="pass">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="password" placeholder="repeat">
-                            </div>
-                        </div>
+
                         <div class="form-group">
                             <label class="col-md-4 control-label" ></label>
                             <div class="col-md-4">
