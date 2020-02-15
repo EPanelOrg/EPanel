@@ -4,38 +4,39 @@ AOS.init({
 });
 
 (function ($) {
+    // milliseconds
+    function sleep(time) {
+        return new Promise((resolve) => setTimeout(resolve, time));
+    }
 
-    // Set the date we're counting down to
-    var countDownDate = new Date("Jan 5, 2021 15:00:00").getTime();
+    var myTimer;
 
-// Update the count down every 1 second
-    var x = setInterval(function () {
+    function clock() {
+        myTimer = setInterval(myClock, 1000);
+        // var c = 43200; // every auction occurs in 12 hours
+        var c = 10;
 
-        // Get today's date and time
-        var now = new Date().getTime();
-
-        // Find the distance between now and the count down date
-        var distance = countDownDate - now;
-
-        // Time calculations for days, hours, minutes and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        // Output the result in an element with id="demo"
-        document.getElementById("timer").innerHTML = hours + "h "
-            + minutes + "m " + seconds + "s ";
-
-        // If the count down is over, write some text
-        if (distance < 0) {
-            clearInterval(x);
-            document.getElementById("timer").innerHTML = "Auction is running right now !";
-            setTimeout(document.getElementById("timer").innerHTML = hours + "h "
-                + minutes + "m " + seconds + "s ", 3600000);
-
+        function myClock() {
+            --c;
+            var seconds = c % 60;
+            var secondsInMinutes = (c - seconds) / 60;
+            var minutes = secondsInMinutes % 60;
+            var hours = (secondsInMinutes - minutes) / 60;
+            document.getElementById("timer").innerHTML = hours + "h "
+                + minutes + "m " + seconds + "s ";
+            if (c === 0) {
+                clearInterval(myTimer);
+                document.getElementById("timer").innerHTML = "<p>Auction is running right now, Click and Join!</p><div class=\"auction-btn-wrap\">\n" +
+                    "  <button class=\"auction-button\">Join Auction</button>\n" +
+                    "</div>";
+                sleep(5000).then(() => {
+                    clock();
+                });
+            }
         }
-    }, 1000);
+    }
+
+    clock();
 
 
     "use strict";
