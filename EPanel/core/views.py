@@ -171,7 +171,7 @@ class ProfileView(APIView):
     def post(self, request):
         data = request.data
 
-        res, created = Profile.objects.get_or_create(user=request.user, email=data['email'], credit=data['credit'])
+        res, created = Profile.objects.get_or_create(user=request.user, CitizenshipNo=data['CitizenshipNo'], BDate=data['BDate'], lastName=data['lastName'], name=data['name'], email=data['email'], credit=data['credit'])
         if created:
             content = {'msg': 'profile created successfully!'}
         else:
@@ -196,6 +196,11 @@ class ProfileView(APIView):
             profile = Profile.objects.get(user=user)
             profile.email = request.data['email']
             profile.credit = request.data['credit']
+            profile.CitizenshipNo=request.data['CitizenshipNo']
+            profile.BDate=request.data['BDate']
+            profile.lastName=request.data['lastName']
+            profile.name=request.data['name']
+
             profile.save()
             content = {'msg': 'profile updated successfully!'}
         else:

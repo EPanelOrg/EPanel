@@ -14,10 +14,9 @@ class Profile(models.Model):
     credit = models.IntegerField()
     email = models.EmailField(default=None, null=True)
     CitizenshipNo = models.IntegerField(null=True)
-    Gender = models.IntegerField(null=True)
     BDate = models.DateField(null=True)
-    name = models.CharField(null=True)
-    lastName = models.CharField(null=True)
+    name = models.CharField(max_length = 30,null=True)
+    lastName = models.CharField(max_length = 30,null=True)
 
 
 class Home(models.Model):

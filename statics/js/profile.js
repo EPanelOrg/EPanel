@@ -1,10 +1,9 @@
 $(function () {
     loadProfileAjax();
 
-    setInterval(function () {
-        profileAjax()
+    $("#submit").click(sentProfileAjax)
 
-    }, 10000)
+
 
 });
 
@@ -13,47 +12,60 @@ function loadProfileAjax() {
     $.ajax
     ({
         type: "GET",
-        url: "http://127.0.0.1:8000/profile/",
+        url: "http://127.0.0.1:8000/profile-api/",
         dataType: 'json',
         headers: {
-            "Authorization": "Bearer " + localStorage.token
+            "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTgxODgwMTgwLCJqdGkiOiI5Yjg2MDNiYzQ0Mjc0OTM0YjQzM2Y0NDFmMjc4YmUyYSIsInVzZXJfaWQiOjF9.p5F8fZvDKOCtq5Kf7ULWM6cXhr-jrhkJVWN6LnPWvL8" //localStorage.token
         },
         success: function (data, status) {
-            $("#pName").html("$ " + data['name'])
-            $("#uName").html("$ " + data['user'])
-            $("#pLastName").html("$ " + data['lastName'])
-            $("#pBirhDate").html("$ " + data['BDate'])
-            $("#pcredit").html("$ " + data['credit'])
-            $("#pEmail").html("$ " + data['email'])
-            $("#pCitizenNo").html("$ " + data['CitizenshipNo'])
+            $("#pName").html(data['profileData']['name'])
+            $("#pLastName").html(data['profileData']['lastName'])
+            $("#pBirhDate").html(data['profileData']['BDate'])
+            $("#pcredit").html(data['profileData']['credit'])
+            $("#pEmail").html(data['profileData']['email'])
+            $("#pCitizenNo").html(data['profileData']['CitizenshipNo'])
         }
     })
     ;
 }
+
 function sentProfileAjax() {
+    var Name;
+    var LastName;
+    var BDate;
+    var EmailAddress;
+    var CitizenshipNo;
+    var credit
+
+    Name =  $("#Name").val().toString();
+    LastName =  $("#LastName").val().toString();
+    BDate =  $("#BDate").val().toString();
+    EmailAddress =  $("#EmailAddress").val().toString();
+    CitizenshipNo =  $("#CitizenshipNo").val().toString();
+    credit =  $("#credit").val().toString();
 
     $.ajax
     ({
-        type: "POST",
-        url: "http://127.0.0.1:8000/profile/",
+        type: "PUT",
+        url: "http://127.0.0.1:8000/profile-api/",
         data: JSON.stringify({
-                    name : Name
-                    lastName :LastName
-                    BDate : BDate
-                    email : EmailAddress
+                    name : Name,
+                    lastName :LastName,
+                    BDate : BDate,
+                    email : EmailAddress,
                     CitizenshipNo : CitizenshipNo
-//                    UserName : UserName
-//                    password :password
-
+                    credit = credit
                 }),
 //        crossDomain: false, //???
         headers: {
-            "Authorization": "Bearer " + localStorage.token
+            "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTgxODgwMTgwLCJqdGkiOiI5Yjg2MDNiYzQ0Mjc0OTM0YjQzM2Y0NDFmMjc4YmUyYSIsInVzZXJfaWQiOjF9.p5F8fZvDKOCtq5Kf7ULWM6cXhr-jrhkJVWN6LnPWvL8",
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
         success: function(result) {
-                        //do stuff
-                    }
+                        alert("profile updated!");
+      }
+     });
+}
 
-      });
+
