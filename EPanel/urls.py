@@ -39,7 +39,7 @@ urlpatterns = [
     path('profile-api/', views.ProfileView.as_view(), name='credit'),
     path('ds/', views.ListDemands.as_view(), name='list'),
 
-    path('', views.index, name="homepage")
+    path('', views.index, name="homepage"),
     path('profile/', views.profile, name='profile'),
 
 ]
