@@ -192,6 +192,7 @@ class ProfileView(APIView):
 
     def put(self, request):
         user = request.user
+
         if Profile.objects.filter(user=user).exists():
             profile = Profile.objects.get(user=user)
             profile.email = request.data['email']
