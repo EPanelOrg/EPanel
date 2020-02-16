@@ -4,6 +4,8 @@ AOS.init({
 });
 
 (function ($) {
+    var token = "";
+
     // milliseconds
     function sleep(time) {
         return new Promise((resolve) => setTimeout(resolve, time));
@@ -27,10 +29,13 @@ AOS.init({
             if (c === 0) {
                 clearInterval(myTimer);
                 document.getElementById("timer").innerHTML = "<p>Auction is running right now, Click and Join!</p><div class=\"auction-btn-wrap\">\n" +
-                    "  <button class=\"auction-button\">Join Auction</button>\n" +
-                    "</div>";
+                    "  <button id="
+                join - auction
+                " class=\"auction-button\">Join Auction</button>\n" +
+                "</div>";
                 sleep(5000).then(() => {
                     clock();
+
                 });
             }
         }
@@ -375,6 +380,7 @@ AOS.init({
                 //
                 // }
             }).done(function (data) {
+            localStorage.setItem('token', data.access);
             // get token and go to dashboard
             alert("token: " + data.access);
         });
@@ -392,6 +398,39 @@ AOS.init({
             {
                 type: "POST",
                 url: "register/",
+                data: JSON.stringify({
+                    username: username,
+                    password: password,
+                    email: email
+
+                }),
+                crossDomain: false,
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+
+            }).done(function (data) {
+            if (data.result === 1) {
+                alert("registered successfully");
+                $(location).attr('href', "dashboard");
+
+            } else {
+                alert("duplicate username!");
+                $("#register-error").textContent = "duplicate username !";
+            }
+
+        });
+    });
+
+
+    $('#join-auction').click(function () {
+
+        email = $("#register-email").val().toString();
+        $.ajax(
+            {
+                type: "POST",
+                url: "joinAuction/",
                 data: JSON.stringify({
                     username: username,
                     password: password,

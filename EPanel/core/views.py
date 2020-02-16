@@ -135,5 +135,25 @@ def signup(request):
         return Response({"result": 0})
 
 
+@api_view(["POST"])
+def join_auction(request):
+    params = request.data
+    private_price = params['private_price']
+    type = params['type']
+
+    try:
+        user, is_new = User.objects.get_or_create(username=username, email=email)
+        if is_new:
+            user.set_password(password)
+            user.save()
+        return Response({"result": 1})
+    except IntegrityError:
+        return Response({"result": 0})
+
+
 def index(request):
     return render(request, 'index.html')
+
+
+def auction(request):
+    return render(request, 'auction.html')
