@@ -1,168 +1,216 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>User profile </title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha256-3dkvEK0WLHRJ7/Csr0BZjAWxERc5WH7bdeUya2aXxdU= sha512-+L4yy6FRcDGbXJ9mPG8MT/3UCDzwR9gPeyFNMCtInsol++5m3bk2bXWKdZjvybmohrAsn3Ua5x8gfLnbE1YkOg==" crossorigin="anonymous">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
+
+    <style>
+    body {
+        padding-top: 70px;
+    }
+
+    .othertop{margin-top:10px;}
+
+    [contenteditable]:focus {
+    outline: 0px solid transparent;
+}
+    </style>
+</head>
+
+<body>
+
 <div class="container">
-    <div class="row">
-        <div class="col-md-10 ">
-            <form class="form-horizontal">
-                <fieldset>
-
-                    <!-- Form Name -->
-                    <legend>User profile form requirement</legend>
-
-                    <!-- Text input-->
-
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="Name (Full name)">Name (Full name)</label>
-                        <div class="col-md-4">
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-user">
-                                    </i>
-                                </div>
-                                <input id="Name (Full name)" name="Name (Full name)" type="text" placeholder="Name (Full name)" class="form-control input-md">
+    <div class="row my-2">
+        <div class="col-lg-8 order-lg-2">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#messages" data-toggle="tab" class="nav-link">Recent auctions</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit</a>
+                </li>
+            </ul>
+            <div class="tab-content py-4">
+                    <div class="tab-pane" id="profile">
+                        <h1 id="uName" contentEditable="true">username</h1>
+                        <br>
+                        <form role="form">
+                            <div class="form-group row">
+                                <label class="col-md-4 control-label" >Name</label>
+                                <p id="pName" contentEditable="true"> edit</p>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-4 control-label" >last Name</label>
+                                <p id="pLastName"></p>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-4 control-label" >Date Of Birth</label>
+                                <p id="pBirhDate"></p>
                             </div>
 
-
-                        </div>
-
-
-                    </div>
-
-                    <!-- File Button -->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="Upload photo">Upload photo</label>
-                        <div class="col-md-4">
-                            <input id="Upload photo" name="Upload photo" class="input-file" type="file">
-                        </div>
-                    </div>
-
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="Date Of Birth">Date Of Birth</label>
-                        <div class="col-md-4">
-
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-birthday-cake"></i>
-
-                                </div>
-                                <input id="Date Of Birth" name="Date Of Birth" type="text" placeholder="Date Of Birth" class="form-control input-md">
+                            <div class="form-group row">
+                                <label class="col-md-4 control-label" for="pcredit">credit </label>
+                                <p id="pcredit"></p>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-4 control-label" for="pEmail">Email Address</label>
+                                <p id="pEmail"></p>
                             </div>
 
-
-                        </div>
-                    </div>
-
-
-                    <!-- Multiple Radios (inline) -->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" >Gender</label>
-                        <div class="col-md-4">
-                            <label class="radio-inline" for="Gender-0">
-                                <input type="radio" name="Gender" id="Gender-0" value="1" checked="checked">
-                                Male
-                            </label>
-                            <label class="radio-inline" for="Gender-1">
-                                <input type="radio" name="Gender" id="Gender-1" value="2">
-                                Female
-                            </label>
-                            <label class="radio-inline" for="Gender-2">
-                                <input type="radio" name="Gender" id="Gender-2" value="3">
-                                Other
-                            </label>
-                        </div>
-                    </div>
-
-
-
-
-
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="Primary Occupation">Primary Occupation</label>
-                        <div class="col-md-4">
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-briefcase"></i>
-
-                                </div>
-                                <input id="Primary Occupation" name="Primary Occupation" type="text" placeholder="Primary Occupation" class="form-control input-md">
+                            <div class="form-group row">
+                                <label class="col-md-4 control-label" for="pCitizenNo">Citizenship No.</label>
+                                <p id="pCitizenNo"></p>
                             </div>
-
-
-                        </div>
+                        </form>
                     </div>
+                <div class="tab-pane" id="messages">
 
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="Phone number ">Phone number </label>
-                        <div class="col-md-4">
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-phone"></i>
+                    <div class="col-md-12">
+                        <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> Recent Auction</h5>
+                        <table class="table table-sm table-hover table-striped">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <strong>buy</strong>  auction number 1
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane" id="edit">
+                    <form role="form">
 
+                        <div class="form-group row">
+                            <label class="col-md-4 control-label"  >Name</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-user">
+                                        </i>
+                                    </div>
+                                    <input id="Name" name="Name " type="text" placeholder="Name" class="form-control input-md">
                                 </div>
-                                <input id="Phone number " name="Phone number " type="text" placeholder=" Phone number " class="form-control input-md">
-
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-4 control-label" >last Name</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-user">
+                                        </i>
+                                    </div>
+                                    <input id="LastName"  type="text" placeholder="last Name " class="form-control input-md">
+                                </div>
                             </div>
 
                         </div>
-                    </div>
+                        <div class="form-group row">
+                            <label class="col-md-4 control-label" >Date Of Birth</label>
+                            <div class="col-md-4">
 
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="Email Address">Email Address</label>
-                        <div class="col-md-4">
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-envelope-o"></i>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-birthday-cake">
+                                        </i>
+                                    </div>
+                                    <input id="BDate"  type="text" placeholder="Birth day date " class="form-control input-md">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-4 control-label" id="Gender">Gender</label>
+                            <div class="col-md-4">
+                                <label class="radio-inline" for="Gender-0">
+                                    <input type="radio" name="Gender" id="Gender-0" value="1" checked="checked">
+                                    Male
+                                </label>
+                                <label class="radio-inline" for="Gender-1">
+                                    <input type="radio" name="Gender" id="Gender-1" value="2">
+                                    Female
+                                </label>
+                                <label class="radio-inline" for="Gender-2">
+                                    <input type="radio" name="Gender" id="Gender-2" value="3">
+                                    Other
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-4 control-label" for="EmailAddress">Email Address</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-envelope-o"></i>
+
+                                    </div>
+                                    <input id="EmailAddress" name="Email Address" type="text" placeholder="Email Address" class="form-control input-md">
 
                                 </div>
-                                <input id="Email Address" name="Email Address" type="text" placeholder="Email Address" class="form-control input-md">
 
                             </div>
-
                         </div>
-                    </div>
 
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="Citizenship No.">Citizenship No.</label>
-                        <div class="col-md-4">
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-sticky-note-o"></i>
+                        <div class="form-group row">
+                            <label class="col-md-4 control-label" for="CitizenshipNo">Citizenship No.</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-sticky-note-o"></i>
+
+                                    </div>
+                                    <input id="CitizenshipNo" name="Citizenship No." type="text" placeholder="Citizenship No." class="form-control input-md">
 
                                 </div>
-                                <input id="Citizenship No." name="Citizenship No." type="text" placeholder="Citizenship No." class="form-control input-md">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-4 control-label" id="credit ">credit</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-user">
+                                        </i>
+                                    </div>
+                                    <input id="credit" type="text" placeholder="credit " class="form-control input-md">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" ></label>
+                            <div class="col-md-4">
+                                <a id="submit" href="#" class="btn btn-success"><span class="glyphicon glyphicon-thumbs-up"></span> Submit</a>
+                                <a href="#" class="btn btn-danger" value=""><span class="glyphicon glyphicon-remove-sign"></span> Clear</a>
 
                             </div>
-
-
                         </div>
-                    </div>
-
-
-
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" ></label>
-                        <div class="col-md-4">
-                            <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-thumbs-up"></span> Submit</a>
-                            <a href="#" class="btn btn-danger" value=""><span class="glyphicon glyphicon-remove-sign"></span> Clear</a>
-
-                        </div>
-                    </div>
-
-                </fieldset>
-            </form>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="col-md-2 hidden-xs">
-            <img src="http://websamplenow.com/30/userprofile/images/avatar.jpg" class="img-responsive img-thumbnail ">
-        </div>
-
 
     </div>
 </div>
-<!-- jQuery Version 1.11.1 -->
-<script src="js/jquery.js"></script>
+<script src="./../statics/js/profile.js" ></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
