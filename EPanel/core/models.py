@@ -9,6 +9,7 @@ class Device(models.Model):
 
 
 class Home(models.Model):
+    home_id = models.IntegerField(default=0, null=True, primary_key=True)
     owner = models.ForeignKey(User, null=False, on_delete=models.CASCADE, default=None)
     power_amount = models.IntegerField(default=0, null=True)
     private_price = models.IntegerField(default=0, null=True)

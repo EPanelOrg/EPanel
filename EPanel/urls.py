@@ -21,16 +21,18 @@ from rest_framework_simplejwt import views as jwt_views
 urlpatterns = [
     path('token', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('register/', views.signup, name='signup'),
-    path('joinAuction/', views.join_auction, name='join_auction'),
     path('token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
 
+    # apis
     path('admin/', admin.site.urls),
     path('hello/', views.HelloView.as_view(), name='hello'),
     path('device/<str:pk>', views.DeviceView.as_view(), name='device'),
     path('device/', views.DeviceView.as_view(), name='device'),
     path('home/', views.HomeView.as_view(), name='home'),
     path('ds/', views.ListDemands.as_view(), name='list'),
+    path('joinAuction/', views.join_auction, name='join_auction'),
 
+    # pages
     path('', views.index, name="homepage"),
     path('auction/', views.auction, name="auction")
 ]
