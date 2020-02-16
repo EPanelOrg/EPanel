@@ -120,7 +120,8 @@ class HomeView(APIView):
 
     def post(self, request):
         user = request.user
-        home = Home.objects.create(owner=user)
+        address = request.data['address']
+        home = Home.objects.create(owner=user, address=address)
         print(type(home))
         return Response({'msg': 'home successfully created!'})
 
@@ -275,3 +276,8 @@ def user_usage(request):
 def profile(request):
 
     return render(request,'profile.html')
+
+
+def homes(request):
+
+    return render(request,'homes.html')

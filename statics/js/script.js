@@ -1,5 +1,5 @@
 var button='<button class="close" type="button" title="Remove this page">×</button>';
-var homeID = 1;
+var homeID = 0;
 
 function resetTab(){
 	var tabs=$("#tab-list li:not(:first)");
@@ -15,8 +15,10 @@ $(document).ready(function() {
     $('#btn-add-tab').click(function() {
         homeID++;
         $('#tab-list').append($('<li><a href="#home' + homeID + '" role="tab" data-toggle="tab"><span> 	&#127968;' + homeID + '</span> <span class="glyphicon glyphicon-pencil text-muted edit"></span> <button class="close" type="button" title="Remove this page">×</button></a></li>'));
-        $('#tab-content').append($('<div class="tab-pane fade" id="home' + homeID + '">section of home ' + homeID + ' <p><button id="btn-add-section" type="button" class="btn btn-primary pull-right">&#43 </button></p></div>'));
+        $('#tab-content').append($('<div class="tab-pane fade" id="home' + homeID + '"><h4>sections of home ' + homeID + ' <h4><div class="grid-container" id="home' + homeID + '"'));
         $(".edit").click(editHandler);
+
+
     });
     
     $('#tab-list').on('click', '.close', function() {
@@ -36,3 +38,20 @@ var editHandler = function() {
     t.css("visibility", "visible");
   });
 };
+
+//var sectionID =1;
+//$(document).ready(function() {
+//  $('#btn-add-section').click(function() {
+//      sectionID++;
+////      $('#section-content').append($('<img src="../statics/images/im.png" />'));
+//        $('#tab-content').append($('<img src="../statics/images/im.png" />'));
+//
+//  });
+
+//  $('#tab-content').on('click', '.close', function() {
+//      var sectioneID = $(this).parents('a').attr('href');
+//      $(this).parents('li').remove();
+//      $(sectioneID).remove();
+//  });
+
+//});

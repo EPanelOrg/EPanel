@@ -17,22 +17,52 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <p><button id="btn-add-tab" type="button" class="btn btn-primary pull-right">&#43 &#127968</button></p>
+                    <p><button id="btn-add-tab" type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#addHome">&#43 &#127968</button></p>
+                    <!-- Modal add home -->
+                    <div class="modal fade" id="addHome" role="dialog">
+                        <div class="modal-dialog">
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">new home</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form role="form">
+
+                                        <div class="form-group row">
+                                            <label class="col-md-4 control-label" >address</label>
+                                            <div class="col-md-4">
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-user">
+                                                        </i>
+                                                    </div>
+                                                    <input id="address" name="type " type="text" placeholder="address" class="form-control input-md">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">add</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- end Modal add home -->
                     <ul id="tab-list" class="nav nav-tabs" role="tablist">
-                        <li class="active"><a href="#home1" role="tab" data-toggle="tab"><span>&#127968 1 </span><span class="glyphicon glyphicon-pencil text-muted edit"></span></a></li>
+                        <!--<li ><a href="#home1" role="tab" data-toggle="tab"><span>&#127968 1 </span><span class="glyphicon glyphicon-pencil text-muted edit"></span></a></li>-->
                     </ul>
                     <!-- section -->
                     <div id="tab-content" class="tab-content">
+                        <p><button id="btn-add-section" type="button" class="btn btn-primary pull-right">&#43 </button></p>
                         <div class="tab-pane fade " id="home1">
-                            <p><button id="btn-add-section" type="button" class="btn btn-primary pull-right">&#43 </button></p>
-                            <h3>diffrent section in home 1</h3>
-                            <div class="grid-container">
-                                <img src="/home/kimia/termm7/UI/fully-responsive-css3-menu/dist/im.png" />
-                                <img src="/home/kimia/termm7/UI/fully-responsive-css3-menu/dist/im.png" />
-                                <img src="/home/kimia/termm7/UI/fully-responsive-css3-menu/dist/im.png" />
-                                <img src="/home/kimia/termm7/UI/fully-responsive-css3-menu/dist/im.png" />
-                                <img src="/home/kimia/termm7/UI/fully-responsive-css3-menu/dist/plus.png" />
-                            </div>
+                            <h4>sections of home 1</h4>
+                            <!--<div class="grid-container">-->
+                                <!--&lt;!&ndash;<img src="../statics/images/im.png" />&ndash;&gt;-->
+                                <!--<img src="../statics/images/plus.png" />-->
+                            <!--</div>-->
                         </div>
                     </div>
                 </div>
