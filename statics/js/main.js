@@ -29,9 +29,7 @@ AOS.init({
             if (c === 0) {
                 clearInterval(myTimer);
                 document.getElementById("timer").innerHTML = "<p>Auction is running right now, Click and Join!</p><div class=\"auction-btn-wrap\">\n" +
-                    "  <button id="
-                join - auction
-                " class=\"auction-button\">Join Auction</button>\n" +
+                    "  <button id=\"show-join-auction-form\" class=\"auction-button\">Join Auction</button>\n" +
                 "</div>";
                 sleep(5000).then(() => {
                     clock();
@@ -424,37 +422,17 @@ AOS.init({
     });
 
 
-    $('#join-auction').click(function () {
 
-        email = $("#register-email").val().toString();
-        $.ajax(
-            {
-                type: "POST",
-                url: "joinAuction/",
-                data: JSON.stringify({
-                    username: username,
-                    password: password,
-                    email: email
-
-                }),
-                crossDomain: false,
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                }
-
-            }).done(function (data) {
-            if (data.result === 1) {
-                alert("registered successfully");
-                $(location).attr('href', "dashboard");
-
-            } else {
-                alert("duplicate username!");
-                $("#register-error").textContent = "duplicate username !";
-            }
-
+    $("#join-auction-form").dialog({
+            modal: true,
+            autoOpen: false,
+            title: "jQuery Dialog",
+            width: 300,
+            height: 150
         });
-    });
+        $("#show-join-auction-form").click(function () {
+           $('#join-auction-form').dialog('open');
+        });
 
 
 })(jQuery);

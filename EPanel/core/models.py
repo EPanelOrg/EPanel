@@ -9,7 +9,7 @@ class Device(models.Model):
 
 
 class Home(models.Model):
-    home_id = models.IntegerField(default=0, null=True, primary_key=True)
+    home_id = models.AutoField(primary_key=True, default=0)
     owner = models.ForeignKey(User, null=False, on_delete=models.CASCADE, default=None)
     power_amount = models.IntegerField(default=0, null=True)
     private_price = models.IntegerField(default=0, null=True)
@@ -37,10 +37,10 @@ class Auction(models.Model):
 
 class Auction_Home(models.Model):
     auction_home_id = models.AutoField(primary_key=True)
-    home = models.ForeignKey(Home, null=False, on_delete=models.CASCADE, default=None, related_name='home')
+    home = models.ForeignKey(Home, null=False, related_name="home_in_auction", on_delete=models.CASCADE, default=0)
     auction = models.ForeignKey(Auction, null=False, on_delete=models.CASCADE, default=None)
     trade_price = models.IntegerField(default=0)
-    traded_with = models.ForeignKey(Home, null=False, on_delete=models.CASCADE, default=None,
-                                    related_name='traded_with')
+    traded_with = models.ForeignKey(Home, null=False, related_name="home_traded_with", on_delete=models.CASCADE,
+                                    default=0)
     date_time = models.DateTimeField(default=0, null=True)
     happened = models.IntegerField(default=0)
