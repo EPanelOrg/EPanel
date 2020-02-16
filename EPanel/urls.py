@@ -34,4 +34,6 @@ urlpatterns = [
     path('my-usage/', views.user_usage, name='user usage'),
     path('profile/', views.ProfileView.as_view(), name='credit'),
     path('ds/', views.ListDemands.as_view(), name='list'),
+    path('profile/', views.profile(), name='profile'),
+
 ]

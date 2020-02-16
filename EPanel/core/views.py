@@ -265,3 +265,7 @@ def user_usage(request):
 
     return Response(content)
 
+
+def profile(request):
+
+    return render(request,'profile.html')

@@ -25,6 +25,10 @@
     }
 
     .othertop{margin-top:10px;}
+
+    [contenteditable]:focus {
+    outline: 0px solid transparent;
+}
     </style>
 </head>
 
@@ -46,12 +50,12 @@
             </ul>
             <div class="tab-content py-4">
                     <div class="tab-pane" id="profile">
-                        <h1 >username</h1>
+                        <h1 id="uName" contentEditable="true">username</h1>
                         <br>
                         <form role="form">
                             <div class="form-group row">
                                 <label class="col-md-4 control-label" >Name</label>
-                                <p id="pName"></p>
+                                <p id="pName" contentEditable="true"> edit</p>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-4 control-label" >last Name</label>
@@ -61,14 +65,10 @@
                                 <label class="col-md-4 control-label" >Date Of Birth</label>
                                 <p id="pBirhDate"></p>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-md-4 control-label">Gender</label>
-                                <p id="pGender"></p>
-                            </div>
 
                             <div class="form-group row">
-                                <label class="col-md-4 control-label" for="pPhoenNum">Phone number </label>
-                                <p id="pPhoenNum"></p>
+                                <label class="col-md-4 control-label" for="pcredit">credit </label>
+                                <p id="pcredit"></p>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-4 control-label" for="pEmail">Email Address</label>
@@ -156,14 +156,14 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-4 control-label" for="PhoneNumber ">Phone number </label>
+                            <label class="col-md-4 control-label" for="credit ">Phone number </label>
                             <div class="col-md-4">
                                 <div class="input-group">
                                     <div class="input-group-addon">
                                         <i class="fa fa-phone"></i>
 
                                     </div>
-                                    <input id="PhoneNumber " name="Phone number " type="text" placeholder=" Phone number " class="form-control input-md">
+                                    <input id="credit " name="credit " type="text" placeholder="credit" class="form-control input-md">
 
                                 </div>
                             </div>
@@ -249,6 +249,8 @@
 
     </div>
 </div>
+<script src="./../statics/js/profile.js" ></script>
+
 </body>
 
 </html>

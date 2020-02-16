@@ -13,11 +13,11 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     credit = models.IntegerField()
     email = models.EmailField(default=None, null=True)
-    Address = models.TextField(max_length=100)
-    phoneNumber = models.IntegerField(null=True)
     CitizenshipNo = models.IntegerField(null=True)
     Gender = models.IntegerField(null=True)
-    BDate = models.IntegerField(null=True)
+    BDate = models.DateField(null=True)
+    name = models.CharField(null=True)
+    lastName = models.CharField(null=True)
 
 
 class Home(models.Model):

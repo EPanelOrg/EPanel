@@ -40,6 +40,11 @@ class ProfileSerializer(serializers.Serializer):
     email = serializers.EmailField()
     user = serializers.CharField(source='user.pk')
     credit = serializers.IntegerField()
+    CitizenshipNo = serializers.IntegerField()
+    Gender = serializers.IntegerField()
+    BDate = serializers.DateField()
+    name = serializers.CharField()
+    lastName = serializers.CharField()
 
     class Meta:
         model = Profile

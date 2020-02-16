@@ -19,16 +19,13 @@ function loadProfileAjax() {
             "Authorization": "Bearer " + localStorage.token
         },
         success: function (data, status) {
-            $("#profile").html("$ " + data['profileData'])
-//            $("#pName").html("$ " + data['profileData'])
-//            $("#pLastName").html("$ " + data['profileData'])
-//            $("#pBirhDate").html("$ " + data['profileData'])
-//            $("#pGender").html("$ " + data['profileData'])
-//            $("#pPhoenNum").html("$ " + data['profileData'])
-//            $("#pEmail").html("$ " + data['profileData'])
-//            $("#pCitizenNo").html("$ " + data['profileData'])
-//            $("#profile").html("$ " + data['profileData'])
-
+            $("#pName").html("$ " + data['name'])
+            $("#uName").html("$ " + data['user'])
+            $("#pLastName").html("$ " + data['lastName'])
+            $("#pBirhDate").html("$ " + data['BDate'])
+            $("#pcredit").html("$ " + data['credit'])
+            $("#pEmail").html("$ " + data['email'])
+            $("#pCitizenNo").html("$ " + data['CitizenshipNo'])
         }
     })
     ;
@@ -40,10 +37,10 @@ function sentProfileAjax() {
         type: "POST",
         url: "http://127.0.0.1:8000/profile/",
         data: JSON.stringify({
+                    uName : uName
                     Name : Name
                     LastName :LastName
                     BDate : BDate
-//                    Gender
                     PhoneNumber : PhoneNumber
                     EmailAddress : EmailAddress
                     CitizenshipNo : CitizenshipNo
