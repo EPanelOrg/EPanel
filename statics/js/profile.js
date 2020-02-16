@@ -37,15 +37,13 @@ function sentProfileAjax() {
         type: "POST",
         url: "http://127.0.0.1:8000/profile/",
         data: JSON.stringify({
-                    uName : uName
-                    Name : Name
-                    LastName :LastName
+                    name : Name
+                    lastName :LastName
                     BDate : BDate
-                    PhoneNumber : PhoneNumber
-                    EmailAddress : EmailAddress
+                    email : EmailAddress
                     CitizenshipNo : CitizenshipNo
-                    UserName: UserName,
-                    password: password,
+//                    UserName : UserName
+//                    password :password
 
                 }),
 //        crossDomain: false, //???
@@ -54,17 +52,8 @@ function sentProfileAjax() {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        success: function (data, status) {
-            $("#profile").html("$ " + data['profileData'])
-        }
-    }).done(function (data) {
-          if (data.result === 1) {
-              alert("edit successfully");
-              $(location).attr('href', "dashboard"); //????
-
-          } else {
-              alert("duplicate username!");
-              $("#register-error").textContent = "duplicate username !";
-          }
+        success: function(result) {
+                        //do stuff
+                    }
 
       });
