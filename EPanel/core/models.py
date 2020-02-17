@@ -9,11 +9,12 @@ class Device(models.Model):
 
 
 class Home(models.Model):
-    home_id = models.AutoField(primary_key=True, default=0)
+    home_id = models.AutoField(primary_key=True)
     owner = models.ForeignKey(User, null=False, on_delete=models.CASCADE, default=None)
     power_amount = models.IntegerField(default=0, null=True)
     private_price = models.IntegerField(default=0, null=True)
-    type = models.CharField(max_length=10, null=True)
+    type = models.CharField(max_length=10, null=True, default=None)
+    star = models.IntegerField(default=0)
 
 
 class DevicePlan(models.Model):

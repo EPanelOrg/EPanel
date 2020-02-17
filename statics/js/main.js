@@ -34,37 +34,6 @@ AOS.init({
                     "</div>";
                 sleep(60000).then(() => {
 
-                    $.ajax(
-                        {
-                            type: "GET",
-                            url: "startAuction/",
-                            crossDomain: false,
-                            headers: {
-                                'Accept': 'application/json',
-                                'Content-Type': 'application/json'
-                            }
-
-                        }).done(function (data) {
-
-
-                        if (data.result === 1) {
-                            document.getElementById("join-auction").innerHTML = "\n" +
-                                "<div>\n" +
-                                "<button type=\"button\" class=\"btn btn-info btn-lg\">Thank you For joining :)</button>\n" +
-                                "</div>";
-                        }
-                        if (data.result === -1) {
-                            alert("Log in First !");
-                        }
-                        if (data.result === -2) {
-                            alert("Add a home first !");
-                        }
-                        if (data.result === 0) {
-                            alert("sth WRONG happened ! O_o");
-                        }
-
-                    });
-
 
                     clock();
 
@@ -510,7 +479,7 @@ function add_to_auction() {
                 "<button type=\"button\" class=\"btn btn-info btn-lg\">Thank you For joining :)</button>\n" +
                 "</div>";
         }
-        if (data.result === -1) {
+        if (data.status === 401) {
             alert("Log in First !");
         }
         if (data.result === -2) {
@@ -521,6 +490,7 @@ function add_to_auction() {
         }
 
     });
+
 
 
 }

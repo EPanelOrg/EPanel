@@ -31,7 +31,7 @@ urlpatterns = [
     path('home/', views.HomeView.as_view(), name='home'),
     path('ds/', views.ListDemands.as_view(), name='list'),
     path('addToAuction/', views.add_to_auction, name='join_auction'),
-    path('startAuction/', views.start_auction, name='join_auction'),
+    path('auction/startAuction/', views.start_auction, name='join_auction'),
 
     # pages
     path('', views.index, name="homepage"),

@@ -1,3 +1,5 @@
+from os import stat_result
+
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -16,7 +18,7 @@ from .algorithms import ProfitBased
 
 
 class HelloView(APIView):
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
 
     def get(self, request):
         content = {'message': 'bye, World!'}
@@ -149,7 +151,7 @@ def add_to_auction(request):
     private_price = params['private_price']
     power_amount = params["power_amount"]
 
-    home = Home.objects.filter(owner=request.user)
+    home = Home.objects.get(owner=request.user, star=1)
     if home is None:
         Response({"result": -2})
     try:
@@ -162,6 +164,7 @@ def add_to_auction(request):
         return Response({"result": 1})
     except Exception as ex:
         print(ex)
+        raise ex
         return Response({"result": 0})
 
 

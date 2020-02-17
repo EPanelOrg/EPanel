@@ -1,9 +1,45 @@
+var n;
+$.ajax(
+    {
+        type: "GET",
+        url: "hello/",
+        crossDomain: false,
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+
+    }).done(function (data) {
+
+
+    if (1 === 1) {
+        alert(data);
+        // document.getElementById("join-auction").innerHTML = "\n" +
+        //     "<div>\n" +
+        //     "<button type=\"button\" class=\"btn btn-info btn-lg\">Thank you For joining :)</button>\n" +
+        //     "</div>";
+    }
+    if (data.result === -1) {
+        alert("Log in First !");
+    }
+    if (data.result === -2) {
+        alert("Add a home first !");
+    }
+    if (data.result === 0) {
+        alert("sth WRONG happened ! O_o");
+        n=1
+    }
+
+});
+
+
 var w = 1000,
     h = 800,
     circleWidth = 5;
 
 
 var palette = {
+    n,
     "lightgray": "#E5E8E8",
     "gray": "#708284",
     "mediumgray": "#536870",
