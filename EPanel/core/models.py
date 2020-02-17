@@ -13,6 +13,10 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     credit = models.IntegerField()
     email = models.EmailField(default=None, null=True)
+    CitizenshipNo = models.IntegerField(null=True)
+    BDate = models.DateField(null=True)
+    name = models.CharField(max_length = 30,null=True)
+    lastName = models.CharField(max_length = 30,null=True)
 
 
 class Home(models.Model):

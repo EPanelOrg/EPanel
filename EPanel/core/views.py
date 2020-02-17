@@ -13,6 +13,7 @@ from .models import Demand_supply
 from .serializers import DS_Serializer, HomeSerializer, SectionSerializer, ProfileSerializer
 from django.views.decorators.clickjacking import xframe_options_exempt
 
+
 class HelloView(APIView):
     permission_classes = (IsAuthenticated,)
 
@@ -171,7 +172,9 @@ class ProfileView(APIView):
     def post(self, request):
         data = request.data
 
-        res, created = Profile.objects.get_or_create(user=request.user, email=data['email'], credit=data['credit'])
+        res, created = Profile.objects.get_or_create(user=request.user, CitizenshipNo=data['CitizenshipNo'],
+                                                     BDate=data['BDate'], lastName=data['lastName'], name=data['name'],
+                                                     email=data['email'], credit=data['credit'])
         if created:
             content = {'msg': 'profile created successfully!'}
         else:
@@ -184,18 +187,24 @@ class ProfileView(APIView):
         if Profile.objects.filter(user=user).exists():
             profile = Profile.objects.get(user=user)
             serializer = ProfileSerializer(profile)
-            data = {'data': serializer.data}
+            content = {'profileData': serializer.data}
         else:
-            data = {'error': 'no profile to retrieve!'}
+            content = {'error': 'no profile to retrieve!'}
 
-        return Response(data)
+        return Response(content)
 
     def put(self, request):
         user = request.user
+
         if Profile.objects.filter(user=user).exists():
             profile = Profile.objects.get(user=user)
             profile.email = request.data['email']
             profile.credit = request.data['credit']
+            profile.CitizenshipNo = request.data['CitizenshipNo']
+            profile.BDate = request.data['BDate']
+            profile.lastName = request.data['lastName']
+            profile.name = request.data['name']
+
             profile.save()
             content = {'msg': 'profile updated successfully!'}
         else:
@@ -239,6 +248,7 @@ def index(request):
 @permission_classes([IsAuthenticated])
 def get_credit(request):
     user = request.user
+    print(user)
     credit = Profile.objects.get(user=user).credit
     content = {'credit-amount': credit}
 
@@ -248,7 +258,6 @@ def get_credit(request):
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def get_homes(request):
-    print(request.user)
     homes = Home.objects.all()
 
     content = {'homes-count': len(homes)}
@@ -271,9 +280,16 @@ def user_usage(request):
 
     return Response(content)
 
+@xframe_options_exempt
+def profile(request):
+    print("profile requested!")
+    return render(request, 'profile.html')
+
+
 def main_page(request):
     # return render(request, 'index.html', context=my_dict)
     return render(request, 'information.html')
+
 
 @xframe_options_exempt
 def dashboard(request):
