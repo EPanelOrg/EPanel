@@ -133,6 +133,16 @@ class HomeView(APIView):
 
         return Response(serialized_data)
 
+    def delete(self, request):
+
+        user = request.user
+        if Home.objects.filter(user=user).exists():
+            Home.objects.get().delete()
+            content = {'msg': 'hoem deleted successfully!'}
+        else:
+            content = {'error': 'no home to delete!'}
+
+        return Response(content)
 
 class SectionView(APIView):
     permission_classes = (IsAuthenticated,)
