@@ -4,38 +4,76 @@ AOS.init({
 });
 
 (function ($) {
+    var token = "";
 
-    // Set the date we're counting down to
-    var countDownDate = new Date("Jan 5, 2021 15:00:00").getTime();
+    // milliseconds
+    function sleep(time) {
+        return new Promise((resolve) => setTimeout(resolve, time));
+    }
 
-// Update the count down every 1 second
-    var x = setInterval(function () {
+    var myTimer;
 
-        // Get today's date and time
-        var now = new Date().getTime();
+    function clock() {
+        myTimer = setInterval(myClock, 1000);
+        // var c = 43200; // every auction occurs in 12 hours
+        var c = 15;
 
-        // Find the distance between now and the count down date
-        var distance = countDownDate - now;
+        function myClock() {
+            --c;
+            var seconds = c % 60;
+            var secondsInMinutes = (c - seconds) / 60;
+            var minutes = secondsInMinutes % 60;
+            var hours = (secondsInMinutes - minutes) / 60;
+            document.getElementById("join-auction").innerHTML = "";
+            document.getElementById("timer").innerHTML = hours + "h "
+                + minutes + "m " + seconds + "s ";
+            if (c === 0) {
+                clearInterval(myTimer);
+                document.getElementById("join-auction").innerHTML = "<p>Auction is running right now, Click and Join!</p><div class=\"auction-btn-wrap\">\n" +
+                    "  <button onclick='join_auction()' id='join-auction-btn' class=\"auction-button\">Join Auction</button>\n" +
+                    "</div>";
+                sleep(60000).then(() => {
 
-        // Time calculations for days, hours, minutes and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    $.ajax(
+                        {
+                            type: "GET",
+                            url: "startAuction/",
+                            crossDomain: false,
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                            }
 
-        // Output the result in an element with id="demo"
-        document.getElementById("timer").innerHTML = hours + "h "
-            + minutes + "m " + seconds + "s ";
+                        }).done(function (data) {
 
-        // If the count down is over, write some text
-        if (distance < 0) {
-            clearInterval(x);
-            document.getElementById("timer").innerHTML = "Auction is running right now !";
-            setTimeout(document.getElementById("timer").innerHTML = hours + "h "
-                + minutes + "m " + seconds + "s ", 3600000);
 
+                        if (data.result === 1) {
+                            document.getElementById("join-auction").innerHTML = "\n" +
+                                "<div>\n" +
+                                "<button type=\"button\" class=\"btn btn-info btn-lg\">Thank you For joining :)</button>\n" +
+                                "</div>";
+                        }
+                        if (data.result === -1) {
+                            alert("Log in First !");
+                        }
+                        if (data.result === -2) {
+                            alert("Add a home first !");
+                        }
+                        if (data.result === 0) {
+                            alert("sth WRONG happened ! O_o");
+                        }
+
+                    });
+
+
+                    clock();
+
+                });
+            }
         }
-    }, 1000);
+    }
+
+    clock();
 
 
     "use strict";
@@ -374,6 +412,7 @@ AOS.init({
                 //
                 // }
             }).done(function (data) {
+            localStorage.setItem('token', data.access);
             // get token and go to dashboard
             localStorage.token = data.access;
             // alert('Got a token from the server! Token: ' + localStorage.token);
@@ -420,4 +459,74 @@ AOS.init({
 
 
 })(jQuery);
+
+
+function join_auction() {
+    $("#join-auction-btn").hidden;
+    document.getElementById("timer-text").hidden;
+    document.getElementById("join-auction").innerHTML = "\n" +
+        "<div>\n" +
+        "<form>\n" +
+        "<input type=\"text\" id='type' name=\"type\" placeholder=\"Seller,Buyer..\">\n" +
+        "<input type=\"text\" id='private-price' name=\"price\" placeholder=\"Bidding Price..\">\n" +
+        "  <input type=\"text\" id='power-amount' name=\"amount\" placeholder=\"Power Amount..\">\n" +
+        "<button type=\"button\" onclick='add_to_auction()' class=\"btn btn-info btn-lg\">Submit Your Inputs</button>\n" +
+        "</form>\n" +
+        "</div>\n" +
+        "\n" +
+        "\n";
+}
+
+
+function add_to_auction() {
+    var type;
+    var private_price;
+    var power_amount;
+    type = $("#type").val().toString();
+    private_price = $("#private-price").val().toString();
+    power_amount = $("#power-amount").val().toString();
+
+    $.ajax(
+        {
+            type: "POST",
+            url: "addToAuction/",
+            data: JSON.stringify({
+                type: type,
+                private_price: private_price,
+                power_amount: power_amount
+
+            }),
+            crossDomain: false,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": "Bearer " + localStorage.token
+            }
+
+        }).done(function (data) {
+
+
+        if (data.result === 1) {
+            document.getElementById("join-auction").innerHTML = "\n" +
+                "<div>\n" +
+                "<button type=\"button\" class=\"btn btn-info btn-lg\">Thank you For joining :)</button>\n" +
+                "</div>";
+        }
+        if (data.result === -1) {
+            alert("Log in First !");
+        }
+        if (data.result === -2) {
+            alert("Add a home first !");
+        }
+        if (data.result === 0) {
+            alert("sth WRONG happened ! O_o");
+        }
+
+    });
+
+
+}
+
+
+
 

@@ -20,6 +20,11 @@ class Profile(models.Model):
 
 
 class Home(models.Model):
+    home_id = models.AutoField(primary_key=True, default=0)
+    owner = models.ForeignKey(User, null=False, on_delete=models.CASCADE, default=None)
+    power_amount = models.IntegerField(default=0, null=True)
+    private_price = models.IntegerField(default=0, null=True)
+    type = models.CharField(max_length=10, null=True)
     owner = models.ForeignKey(User, null=False, on_delete=models.CASCADE, default=None)
     active = models.BooleanField(default=True)
     type = models.CharField(max_length=10, null=True)
@@ -60,3 +65,19 @@ class Demand_supply(models.Model):
     home_id = models.IntegerField(primary_key=True)
     demand = models.FloatField(default=0, null=True)
     supply = models.FloatField(default=0, null=True)
+
+
+class Auction(models.Model):
+    auction_id = models.AutoField(primary_key=True)
+    description = models.CharField(max_length=30)
+
+
+class Auction_Home(models.Model):
+    auction_home_id = models.AutoField(primary_key=True)
+    home = models.ForeignKey(Home, null=False, related_name="home_in_auction", on_delete=models.CASCADE, default=0)
+    auction = models.ForeignKey(Auction, null=False, on_delete=models.CASCADE, default=None)
+    trade_price = models.IntegerField(default=0)
+    traded_with = models.ForeignKey(Home, null=False, related_name="home_traded_with", on_delete=models.CASCADE,
+                                    default=0)
+    date_time = models.DateTimeField(default=0, null=True)
+    happened = models.IntegerField(default=0)

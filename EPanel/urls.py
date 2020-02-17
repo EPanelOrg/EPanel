@@ -23,6 +23,7 @@ urlpatterns = [
     path('register/', views.signup, name='signup'),
     path('token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
 
+    # apis
     path('admin/', admin.site.urls),
     path('hello/', views.HelloView.as_view(), name='hello'),
     path('device/<str:pk>', views.DeviceView.as_view(), name='device'),
@@ -39,8 +40,12 @@ urlpatterns = [
 
     path('profile-api/', views.ProfileView.as_view(), name='credit'),
     path('ds/', views.ListDemands.as_view(), name='list'),
+    path('addToAuction/', views.add_to_auction, name='join_auction'),
+    path('startAuction/', views.start_auction, name='join_auction'),
 
     path('', views.index, name="homepage"),
     path('profile/', views.profile, name='profile'),
 
+    # pages
+    path('auction/', views.auction, name="auction")
 ]
