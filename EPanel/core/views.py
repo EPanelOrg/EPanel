@@ -121,7 +121,8 @@ class HomeView(APIView):
 
     def post(self, request):
         user = request.user
-        home = Home.objects.create(owner=user)
+        address = request.data['address']
+        home = Home.objects.create(owner=user, address=address)
         print(type(home))
         return Response({'msg': 'home successfully created!'})
 
@@ -133,6 +134,16 @@ class HomeView(APIView):
 
         return Response(serialized_data)
 
+    def delete(self, request):
+
+        user = request.user
+        if Home.objects.filter(user=user).exists():
+            Home.objects.get().delete()
+            content = {'msg': 'hoem deleted successfully!'}
+        else:
+            content = {'error': 'no home to delete!'}
+
+        return Response(content)
 
 class SectionView(APIView):
     permission_classes = (IsAuthenticated,)
@@ -248,7 +259,6 @@ def index(request):
 @permission_classes([IsAuthenticated])
 def get_credit(request):
     user = request.user
-    print(user)
     credit = Profile.objects.get(user=user).credit
     content = {'credit-amount': credit}
 
@@ -295,3 +305,8 @@ def main_page(request):
 def dashboard(request):
     # return render(request, 'index.html', context=my_dict)
     return render(request, 'dashBoard.html')
+
+@xframe_options_exempt
+def homes(request):
+
+    return render(request,'homes.html')

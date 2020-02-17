@@ -30,6 +30,8 @@ class DS_Serializer(serializers.Serializer):
 class HomeSerializer(serializers.Serializer):
     owner = serializers.CharField()
     active = serializers.BooleanField()
+    type = serializers.CharField()
+    address = serializers.CharField()
     pk = serializers.IntegerField()
 
     class Meta:

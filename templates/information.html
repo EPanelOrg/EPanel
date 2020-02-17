@@ -3,12 +3,23 @@
 <head>
     {% load static %}
     <meta charset="UTF-8">
-    <title>CodePen - Fully responsive CSS3 menu</title>
+    <title>information</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="../statics/css/style.css">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+  main {
+    background-image : url('../statics/images/background.jpg');
+
+      background-repeat : no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+  }
+</style>
 
 </head>
 <body>
@@ -16,8 +27,8 @@
 <nav class="menu" tabindex="0">
     <div class="smartphone-menu-trigger"></div>
     <header class="avatar">
-        <img src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/128.jpg" />
-        <h2>John D.</h2>
+        <img style="background-color:white;" src="../statics/images/avatar.png" />
+        <h2 style="color:white;">username</h2>
     </header>
     <ul class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <li tabindex="0" class="icon-dashboard" class="nav-item" class="active"><a class="nav-link active" id="v-pills-dashboard-tab" data-toggle="tab" href="#v-pills-dashboard" role="tab" aria-controls="v-pills-dashboard" aria-selected="true">Dashboard</a></li>
@@ -29,6 +40,7 @@
 <main>
     <div class="tab-content" id="v-pills-tabContent">
         <div class="tab-pane fade " id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+            <iframe overflow="hidden"  style="position: relative; width: 90%; border: 0; height: 90vh"  src="./homes.html"  ></iframe>
             <div class="tab-content">
                 <div class="container" id="home" class="tab-pane fade">
                     <h3>homes</h3>
@@ -66,6 +78,13 @@
         </div>
         <div class="tab-pane fade active in" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
             <iframe style="position: relative; width: 100%; border: 0; height: 100vh"  src="/profile"  ></iframe>
+        </div>
+
+        <div class="tab-pane fade " id="v-pills-dashboard" role="tabpanel" aria-labelledby="v-pills-dashboard-tab">
+            <iframe  style="position: relative; width: 100%; border: 0; height: 100vh"  src="./dashBoard.html"  ></iframe>
+        </div>
+        <div align="center" class="tab-pane fade " id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+            <iframe width="1000" height="800"  src="./profile.html"   frameBorder="0"></iframe>
 
         </div>
     </div>

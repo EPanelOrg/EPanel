@@ -22,6 +22,8 @@ class Profile(models.Model):
 class Home(models.Model):
     owner = models.ForeignKey(User, null=False, on_delete=models.CASCADE, default=None)
     active = models.BooleanField(default=True)
+    type = models.CharField(max_length=10, null=True)
+    address = models.CharField(max_length=50, null=True)
 
     def __unicode__(self):
         return self.name
