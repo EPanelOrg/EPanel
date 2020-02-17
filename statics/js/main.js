@@ -16,7 +16,7 @@ AOS.init({
     function clock() {
         myTimer = setInterval(myClock, 1000);
         // var c = 43200; // every auction occurs in 12 hours
-        var c = 10;
+        var c = 15;
 
         function myClock() {
             --c;
@@ -24,14 +24,48 @@ AOS.init({
             var secondsInMinutes = (c - seconds) / 60;
             var minutes = secondsInMinutes % 60;
             var hours = (secondsInMinutes - minutes) / 60;
+            document.getElementById("join-auction").innerHTML = "";
             document.getElementById("timer").innerHTML = hours + "h "
                 + minutes + "m " + seconds + "s ";
             if (c === 0) {
                 clearInterval(myTimer);
-                document.getElementById("timer").innerHTML = "<p>Auction is running right now, Click and Join!</p><div class=\"auction-btn-wrap\">\n" +
-                    "  <button id=\"show-join-auction-form\" class=\"auction-button\">Join Auction</button>\n" +
-                "</div>";
-                sleep(5000).then(() => {
+                document.getElementById("join-auction").innerHTML = "<p>Auction is running right now, Click and Join!</p><div class=\"auction-btn-wrap\">\n" +
+                    "  <button onclick='join_auction()' id='join-auction-btn' class=\"auction-button\">Join Auction</button>\n" +
+                    "</div>";
+                sleep(60000).then(() => {
+
+                    $.ajax(
+                        {
+                            type: "GET",
+                            url: "startAuction/",
+                            crossDomain: false,
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                            }
+
+                        }).done(function (data) {
+
+
+                        if (data.result === 1) {
+                            document.getElementById("join-auction").innerHTML = "\n" +
+                                "<div>\n" +
+                                "<button type=\"button\" class=\"btn btn-info btn-lg\">Thank you For joining :)</button>\n" +
+                                "</div>";
+                        }
+                        if (data.result === -1) {
+                            alert("Log in First !");
+                        }
+                        if (data.result === -2) {
+                            alert("Add a home first !");
+                        }
+                        if (data.result === 0) {
+                            alert("sth WRONG happened ! O_o");
+                        }
+
+                    });
+
+
                     clock();
 
                 });
@@ -380,7 +414,7 @@ AOS.init({
             }).done(function (data) {
             localStorage.setItem('token', data.access);
             // get token and go to dashboard
-            alert("token: " + data.access);
+            // alert("token: " + data.access);
         });
     });
 
@@ -422,18 +456,75 @@ AOS.init({
     });
 
 
-
-    $("#join-auction-form").dialog({
-            modal: true,
-            autoOpen: false,
-            title: "jQuery Dialog",
-            width: 300,
-            height: 150
-        });
-        $("#show-join-auction-form").click(function () {
-           $('#join-auction-form').dialog('open');
-        });
-
-
 })(jQuery);
+
+
+function join_auction() {
+    $("#join-auction-btn").hidden;
+    document.getElementById("timer-text").hidden;
+    document.getElementById("join-auction").innerHTML = "\n" +
+        "<div>\n" +
+        "<form>\n" +
+        "<input type=\"text\" id='type' name=\"type\" placeholder=\"Seller,Buyer..\">\n" +
+        "<input type=\"text\" id='private-price' name=\"price\" placeholder=\"Bidding Price..\">\n" +
+        "  <input type=\"text\" id='power-amount' name=\"amount\" placeholder=\"Power Amount..\">\n" +
+        "<button type=\"button\" onclick='add_to_auction()' class=\"btn btn-info btn-lg\">Submit Your Inputs</button>\n" +
+        "</form>\n" +
+        "</div>\n" +
+        "\n" +
+        "\n";
+}
+
+
+function add_to_auction() {
+    var type;
+    var private_price;
+    var power_amount;
+    type = $("#type").val().toString();
+    private_price = $("#private-price").val().toString();
+    power_amount = $("#power-amount").val().toString();
+
+    $.ajax(
+        {
+            type: "POST",
+            url: "addToAuction/",
+            data: JSON.stringify({
+                type: type,
+                private_price: private_price,
+                power_amount: power_amount
+
+            }),
+            crossDomain: false,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": "Bearer " + localStorage.token
+            }
+
+        }).done(function (data) {
+
+
+        if (data.result === 1) {
+            document.getElementById("join-auction").innerHTML = "\n" +
+                "<div>\n" +
+                "<button type=\"button\" class=\"btn btn-info btn-lg\">Thank you For joining :)</button>\n" +
+                "</div>";
+        }
+        if (data.result === -1) {
+            alert("Log in First !");
+        }
+        if (data.result === -2) {
+            alert("Add a home first !");
+        }
+        if (data.result === 0) {
+            alert("sth WRONG happened ! O_o");
+        }
+
+    });
+
+
+}
+
+
+
 

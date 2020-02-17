@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
     <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">#}
 
 </head>
 <body>
@@ -61,11 +62,25 @@
                  src="{% static 'images/bg3_.png' %}" alt="">
             <div class="one-forth d-flex align-items-center ftco-animate js-fullheight">
                 <div class="text mt-5">
-                    <h3><p class="mb-4 mt-5 pt-10">Next Auction Starts In: <span class="number" id="timer">0</span></p>
+                    <h3>
+                        <p id="timer-text" class="mb-4 mt-5 pt-10">Next Auction Starts In: <span class="number" id="timer">0</span></p>
+                        <div id="join-auction"></div>
                     </h3>
-                    <div id="join-auction-form" style="display: none; align-self: center">
-                        This is a jQuery Dialog.
-                    </div>
+
+{#                    <div style="display: none;" id="myForm">#}
+{#                        <form action="#" class="search-job">#}
+{#                            <h1>Login</h1>#}
+{##}
+{#                            <label for="email"><b>private price</b></label>#}
+{#                            <input type="text" placeholder="Enter Email" name="email" required>#}
+{##}
+{#                            <label for="psw"><b>Password</b></label>#}
+{#                            <input type="password" placeholder="Enter Password" name="psw" required>#}
+{##}
+{#                            <button type="submit" class="btn">Login</button>#}
+{#                            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>#}
+{#                        </form>#}
+{#                    </div>#}
                     <h1 class="mb-2">KMF <span style="font-size: xx-large">Power Auction System !</span></h1>
                     <h3 class="mb-4">With KMF you can trade good electricity !</h3>
 
@@ -97,7 +112,7 @@
                                                             <div class="icon"><span class="icon-user"></span></div>
                                                             <input id="login-username" type="text" class="form-control"
                                                                    placeholder="Username">
-                                                            {#                                                            <p id="temppp">0000</p>#}
+                                                            {#<p id="temppp">0000</p>#}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -376,6 +391,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="{% static 'js/google-map.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
+
 
 </body>
 </html>
