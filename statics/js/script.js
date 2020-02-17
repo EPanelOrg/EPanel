@@ -15,6 +15,7 @@ function loadHomeAjax() {
         },
         success: function (data, status) {
 //            $("#pName").html(data['profileData']['name'])
+            alert(data)
 
         }
     })
@@ -59,7 +60,9 @@ $(document).ready(function() {
     $('#btn-add-tab').click(function() {
         homeID++;
         $('#tab-list').append($('<li><a href="#home' + homeID + '" role="tab" data-toggle="tab"><span> 	&#127968;' + homeID + '</span> <span class="glyphicon glyphicon-pencil text-muted edit"></span> <button class="close" type="button" title="Remove this page">×</button></a></li>'));
-        $('#tab-content').append($('<div class="tab-pane fade" id="home' + homeID + '"><h4>sections of home ' + homeID + ' <h4><img src="../statics/images/house.jpg" /><div class="grid-container" id="home' + homeID + '"'));
+        $('#tab-content').append($('<div class="tab-pane fade" id="home' + homeID + '"><h4>sections of home ' + homeID + ' </h4><img src="../statics/images/im.png" /><a>living room</a><img src="../statics/images/im.png" /><a>kitchen</a><img src="../statics/images/im.png" /><a>bedroom</a><img src="../statics/images/im.png" /><a>library</a><img src="../statics/images/im.png" /><a>dining room</a><img src="../statics/images/im.png" /><a>hall</a><img src="../statics/images/im.png" /><a>bathroom</a><img src="../statics/images/im.png" /><a>basement</a></div>'));
+//                $('#ta    b-content').append($('<div class="tab-pane fade" id="home' + homeID + '"><h4>sections of home ' + homeID + ' </h4><button id="btn-add-section" type="button" class="btn btn-primary pull-right">&#43 </button><div class="grid-container" id="section' + homeID + '"></div></div>'));
+
         $(".edit").click(editHandler);
 
 
@@ -104,8 +107,8 @@ var editHandler = function() {
 //$(document).ready(function() {
 //  $('#btn-add-section').click(function() {
 //      sectionID++;
-////      $('#section-content').append($('<img src="../statics/images/im.png" />'));
-//        $('#tab-content').append($('<img src="../statics/images/im.png" />'));
+//      $('#section1').append($('<img src="../statics/images/im.png" />'));
+////        $('#tab-content').append($('<img src="../statics/images/im.png" />'));
 //
 //  });
 //  $('#tab-content').on('click', '.close', function() {
