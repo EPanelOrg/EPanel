@@ -27,7 +27,8 @@
 <nav class="menu" tabindex="0">
     <div class="smartphone-menu-trigger"></div>
     <header class="avatar">
-        <img style="background-color:white;" src="../statics/images/avatar.png" />
+        <img style="background-color:white;" src="{% static 'images/avatar.png' %}" />
+
         <h2 style="color:white;">username</h2>
     </header>
     <ul class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -40,39 +41,10 @@
 <main>
     <div class="tab-content" id="v-pills-tabContent">
         <div class="tab-pane fade " id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-            <iframe overflow="hidden"  style="position: relative; width: 90%; border: 0; height: 90vh"  src="/home"  ></iframe>
-            <div class="tab-content">
-                <div class="container" id="home" class="tab-pane fade">
-                    <h3>homes</h3>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p><button id="btn-add-tab" type="button" class="btn btn-primary pull-right">&#43</button></p>
-                                <!-- Nav tabs -->
-                                <ul id="tab-list" class="nav nav-tabs" role="tablist">
-                                    <li class="active"><a href="#home1" role="tab" data-toggle="tab"><span>&#127968 1 </span><span class="glyphicon glyphicon-pencil text-muted edit"></span></a></li>                                </ul>
-                                <!-- Tab panes -->
-                                <div id="tab-content" class="tab-content">
-                                    <div class="tab-pane fade " id="home1">
-                                        <h3>diffrent section in home 1</h3>
-                                        <div class="grid-container">
-                                            <img src="{% static 'images/im.png' %}" />
-                                            <img src="{% static 'images/im.png' %}" />
-                                            <img src="{% static 'images/im.png' %}" />
-                                            <img src="{% static 'images/im.png' %}" />
+           <iframe overflow="hidden"  style="position: relative; width: 90%; border: 0; height: 90vh"  src="/home"  ></iframe>
 
-                                            <img src="{% static 'images/plus.png' %}" />
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
+
         <div class="tab-pane fade active in" id="v-pills-dashboard" role="tabpanel" aria-labelledby="v-pills-dashboard-tab">
             <iframe  style="position: relative; width: 100%; border: 0; height: 100vh"  src="/dashboard"  ></iframe>
         </div>
@@ -80,13 +52,7 @@
             <iframe style="position: relative; width: 100%; border: 0; height: 100vh"  src="/profile"  ></iframe>
         </div>
 
-        <div class="tab-pane fade " id="v-pills-dashboard" role="tabpanel" aria-labelledby="v-pills-dashboard-tab">
-            <iframe  style="position: relative; width: 100%; border: 0; height: 100vh"  src="./dashBoard.html"  ></iframe>
-        </div>
-        <div align="center" class="tab-pane fade " id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-            <iframe width="1000" height="800"  src="./profile.html"   frameBorder="0"></iframe>
 
-        </div>
     </div>
 </main>
 <!-- partial -->
