@@ -35,6 +35,7 @@ urlpatterns = [
     path('main/', views.main_page, name='main page'),
     path('dashboard/', views.dashboard, name='main page'),
 
+    path('home/', views.homes, name='main page'),
 
     path('profile-api/', views.ProfileView.as_view(), name='credit'),
     path('ds/', views.ListDemands.as_view(), name='list'),
